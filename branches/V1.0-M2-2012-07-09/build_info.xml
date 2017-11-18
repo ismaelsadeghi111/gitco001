@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="build_info" default="mark-revision">
+<!-- =================================
+	      SY Ant Build Version 1.0.1  Date: 2011-05-20
+	      This ant file build Major,Minor, Patch number as well for buildnumber. 
+
+		  
+!-->
+    
+	<!--You need set this file ...-->
+	
+	<property name="build_info.properties" value="src/com/sefryek/config/build_info.properties"/>
+	
+    <tstamp>
+        <format property="today" pattern="yyyy/MM/dd-HH:mm" />
+    </tstamp>
+
+    <target name="mark-build">
+        <propertyfile file="${build_info.properties}">
+            <entry key="build.number" type="int" operation="+" value="1" />
+            <entry key="build.date" value="${today}" />
+            <entry key="version.info"
+                value="Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}" />
+        </propertyfile>
+    <echo> Building Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}</echo>
+    </target>
+
+    <target name="mark-revision">
+        <propertyfile file="${build_info.properties}">
+            <entry key="build.revision.number" type="int" operation="+" value="1" />
+            <entry key="build.number" type="int" operation="+" value="1" />
+            <entry key="build.date" value="${today}" />
+            <entry key="version.info"
+                value="Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}" />
+        </propertyfile>
+    <echo> Building Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}</echo>
+    </target>
+
+    <target name="mark-minor">
+        <propertyfile file="${build_info.properties}">
+            <entry key="build.minor.number" type="int" operation="+" value="1" />
+            <entry key="build.revision.number" type="int" operation="=" value="0" />
+            <entry key="build.number" type="int" operation="+" value="1" />
+            <entry key="build.date" value="${today}" />
+            <entry key="version.info"
+                value="Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}" />
+        </propertyfile>
+    <echo> Building Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}</echo>
+    </target>
+
+    <target name="mark-major">
+        <propertyfile file="${build_info.properties}">
+            <entry key="build.major.number" type="int" operation="+" value="1" />
+            <entry key="build.minor.number" type="int" operation="=" value="0" />
+            <entry key="build.revision.number" type="int" operation="=" value="0" />
+            <entry key="build.number" type="int" operation="+" value="1" />
+            <entry key="build.date" value="${today}" />
+            <entry key="version.info"
+                value="Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}" />
+        </propertyfile>
+    <echo> Building Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}</echo>
+    </target>
+
+    <echo> Building Version: ${build.major.number}.${build.minor.number}.${build.revision.number} Date: ${build.date} Build: ${build.number}</echo>
+    
+</project>
+
+
+
+

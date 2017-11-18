@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<project name="DoublePizza Web Build Script" default="default" basedir=".">
+	<!-- =================================
+	      SY Ant Build Version 1.0.2  Date: 2011-11-26
+	      This file is Standard ant file for all project.
+	      1- You need to replae project name and verison in build.properties
+	      2- Every project has its own specifc circumestances
+	       
+	      		 
+          Here is Dirsctory Struction of Build Process
+          prj: src: contians sources
+              db: contains db files
+              web: contains web files
+              ...
+              ...
+              build: temprory is used for building
+              dist: contais release.            
+              
+              
+           Any comment, email to web-dev@sefr-yek.com
+           Note: Tags which are staring with - are internal tags and you cannot call them.
+           Call default to see avaiable targets.          
+         ================================= -->
+	<property file="build.properties"/>
+	<property name="project.name" value="${project.name}"/>
+	
+	<property name="project.name.dev" value="${project.name}dev"/>
+	<property name="project.name.test" value="${project.name}test"/>
+	<property name="project.name.prod" value="${project.name}prod"/>
+	
+	<import file="build_info.xml"/>
+
+	<property name="src.dir" value="src"/>
+	<property name="web.dir" value="web"/>
+	<property name="web.webinf.dir" value="${web.dir}/WEB-INF"/>
+	<property name="web.webinf.lib.dir" value="${web.webinf.dir}/lib"/>
+	<property name="web.webinf.classes.dir" value="${web.webinf.dir}/classes"/>
+
+	<property name="db.dir" value="db"/>
+
+	<property name="build.dir" value="../build"/>
+	<property name="dist.dir" value="../dist"/>
+	<property name="dist.web.dir" value="../dist/web"/>
+
+    <tstamp>
+        <format property="dir.now" pattern="yyyyMMdd_HHmm" />
+    </tstamp>
+
+	<path id="libs.classpath">
+		<fileset dir="${web.webinf.lib.dir}">
+			<include name="**/*.jar"/>
+			<include name="**/*.zip"/>
+		</fileset>
+		<fileset dir="ext-lib">
+			<include name="**/*.jar"/>
+			<include name="**/*.zip"/>
+		</fileset>
+	</path>
+
+	<target name="default">
+		<echo message="here are options: " />
+		<echo message=" ant release-prod-major " />
+		<echo message=" ant release-prod-minor " />
+		<echo message=" ant release-prod-revision " />
+		<echo message=" ant release-prod-build " />
+		<echo message=" ant release-test-major " />
+		<echo message=" ant release-test-minor " />
+		<echo message=" ant release-test-revision " />
+		<echo message=" ant release-test-build " />
+	</target>
+
+	<target name="clean" depends="dir.check" if="dir.exists">
+			<echo message="backup dist, and delete build direcories" />
+			<delete dir="${build.dir}" />
+			<mkdir dir="${dist.dir}.${dir.now}"/>
+			<copy todir= "${dist.dir}.${dir.now}" overwrite="true">
+				<fileset dir="${dist.dir}" includes="**/*.*"/>
+			</copy>
+			<delete dir="${dist.dir}"  />
+    </target>
+
+	<target name="dir.check">
+        <delete dir="${web.webinf.classes.dir}"  />
+	    <condition property="dir.exists">
+	      <available file="${dist.dir}" type="dir"/>
+	    </condition>
+	</target>
+
+	<target name="-init-build">
+		<echo message="Copying required resources to build folder for making project jar file" />
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.dir}/classes"/>
+		<copy todir= "${build.dir}/classes" overwrite="true">
+			<fileset dir="${src.dir}" includes="**/*.hbm.xml, **/*.properties"/>
+		</copy>
+	</target>
+
+	<target name="-compile" depends="-init-build" description="">
+		<echo message="Compiling Source Files to build/classes" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="yes">
+			<classpath refid="libs.classpath"/>
+		</javac>
+	</target>
+
+	<target name="-build-prj-jar" depends="-compile" description="">
+		<echo message="Making Project Jar File from build" />
+		<mkdir dir="${dist.dir}"/>
+		<jar destfile="${dist.dir}/${project.name}.jar"
+             basedir="${build.dir}/classes/"
+             includes="com/**, org/**, *.properties"
+        	 excludes="log4j.properties" >
+		</jar>
+	</target>
+
+
+	<target name="-prepare-dist-env" depends="clean" description="">
+		<echo message="Preparing dist folder for Release" />
+		<mkdir dir="${dist.web.dir}"/>
+		<copy todir= "${dist.web.dir}" overwrite="true" includeemptydirs="true" >
+			<fileset dir="${web.dir}" includes="**/*.*"  excludes="**/*.class, **/.svn/**"/>
+		</copy>
+		<copy todir="${dist.dir}/${web.webinf.classes.dir}" >  
+		        <fileset dir="${src.dir}" includes="**/*.xml, **/*.properties"  excludes="**/.svn/**"/>
+		</copy>
+		<copy todir="${dist.dir}/${db.dir}" >  
+		        <fileset dir="${db.dir}" includes="**/*.*"  excludes="**/.svn/**"/>
+		</copy>
+	</target>
+
+	<target name="release-prod-major" depends="mark-major, -release-prod">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-prod-minor" depends="mark-minor, -release-prod">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-prod-revision" depends="mark-revision, -release-prod">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-prod-build" depends="mark-build, -release-prod">
+		<echo message="Releasing ..." />
+	</target>
+	
+	<target name="-release-prod" depends=" -prepare-dist-env, -prepare-prod, -build-release">
+		<echo message="" />
+	</target>
+
+	<target name="release-test-major" depends="mark-major, -release-test">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-test-minor" depends="mark-minor, -release-test">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-test-revision" depends="mark-revision, -release-test">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="release-test-build" depends="mark-build, -release-test">
+		<echo message="Releasing ..." />
+	</target>
+	<target name="-release-test" depends="-prepare-dist-env, -prepare-test, -build-release">
+		<echo message="Releasing ..." />
+	</target>
+
+	
+	<target name="-build-release" depends="-build-prj-jar">
+		<echo message="" />
+		<copy todir="${dist.dir}/${web.webinf.lib.dir}" >  
+			<fileset dir="${dist.dir}" includes="${project.name}.jar" />
+		</copy>
+	</target>
+
+	<target name="-prepare-prod">
+		<echo message="Preparing Files for Production Env" />
+		<echo message="You Need To Fill This Section Based on the Project" />
+		
+	</target>
+
+	<target name="-prepare-test">
+		<echo message="Preparing Files for Test Env" />
+		<echo message="You Need To Fill This Section Based on the Project" />
+		
+	</target>
+
+    <target name="test" description="">
+        <echo message="You can use this target for debug purpose" />
+    </target>
+
+
+</project>

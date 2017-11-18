@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <!--<property name="connection.url">jdbc:sqlserver://68.71.44.66:2711/doublepizzadev?useUnicode=true&amp;characterEncoding=UTF8</property>-->
+        <property name="connection.url">jdbc:sqlserver://${jdbc.ip}:${jdbc.port};databasename=${jdbc.database};username=${jdbc.username};?useUnicode=true&amp;characterEncoding=UTF8</property>
+
+        <property name="connection.username">${jdbc.username}</property>
+        <property name="connection.password">${jdbc.password}</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">200</property>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        <!-- Mapping files -->
+        <!--<mapping class="com.sefryek.league.model.Contact" />-->
+        <mapping class="com.sefryek.doublepizza.model.User" />
+        <mapping class="com.sefryek.doublepizza.model.FeedBack" />
+        <mapping class="com.sefryek.doublepizza.model.Tax" />
+        <mapping class="com.sefryek.doublepizza.model.Slider" />
+
+    </session-factory>
+</hibernate-configuration>

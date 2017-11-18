@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <!--front end layout-->
+
+    <!--must be commented-->
+<!--    <definition name="frontendBaseLayout" path="/decorator/frontend/layout.jsp" >
+        <put name="header"  value="/decorator/frontend/header.jsp" />
+        <put name="initial" value=""/>
+        <put name="mapInitial" value=""/>
+        <put name="header2" value="" />
+        <put name="body"    value="" />
+        <put name="footer"  value="/pages/frontend/home/homeFooter.jsp" />
+    </definition>-->
+
+    <definition name="backendBaseLayout" path="">
+        <put name="header"  value="/decorator/frontend/header.jsp" />
+        <put name="initial" value=""/>
+        <put name="header2" value="" />
+        <put name="body"    value="" />
+        <put name="footer"  value="/pages/frontend/home/homeFooter.jsp" />
+    </definition>
+
+
+    <definition name="frontendCustomizeLayout" path="/decorator/frontend/customiz-layout.jsp">
+        <put name="header"  value="/decorator/frontend/customize-header.jsp" />
+        <put name="initial" value=""/>
+        <put name="header2" value="" />
+        <put name="body"    value="" />
+        <put name="footer"  value="/decorator/frontend/secondFooter.jsp" />
+    </definition>
+
+    <definition name="frontendSecondLayout" path="/decorator/frontend/layout.jsp" >
+        <put name="header"  value="/decorator/frontend/header.jsp" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2" value="" />
+        <put name="body"    value="" />
+        <put name="footer"  value="/decorator/frontend/secondFooter.jsp" />
+    </definition>
+
+    <!--must be commented-->
+<!--    <definition name="gotoHomePage" extends="frontendBaseLayout" >
+        <put name="name"    value="Home" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="header2" value="/pages/frontend/home/header2.jsp" />
+        <put name="body"    value="/pages/frontend/home/homeBody.jsp" />
+    </definition>-->
+
+<!--    <definition name="gotoAboutPage" extends="frontendSecondLayout" >
+        <put name="name"    value="About" />
+        <put name="header2"    value="/pages/frontend/about/aboutUs.jsp" />
+    </definition>-->
+
+    <definition name="funZonePage" extends="frontendSecondLayout" >
+            <put name="name"    value="funzone" />
+            <put name="header2"    value="/pages/frontend/funzone/funZone.jsp" />
+    </definition>
+
+
+<!--    <definition name="gotoFranchisingPage" extends="frontendSecondLayout" >
+        <put name="name"    value="Franchising" />
+        <put name="header2"    value="/pages/frontend/franchising/franchising.jsp" />
+    </definition>-->
+
+   <!-- <definition name="gotoCateringPage" extends="frontendSecondLayout" >
+        <put name="name"    value="CateringService" />
+        <put name="header2"    value="/pages/frontend/catering/catering.jsp" />
+    </definition>
+-->
+    <definition name="gotoTermsConditionsPage" extends="frontendSecondLayout" >
+        <put name="name"    value="TermsAndConditions" />
+        <put name="header2"    value="/pages/frontend/termsConditions/termConditions.jsp" />
+    </definition>
+
+<!--    <definition name="gotoLoginPage" extends="frontendSecondLayout" >
+        <put name="name"    value="Login" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/login/login.jsp" />
+    </definition>-->
+
+<!--    <definition name="forwardToStoreLocatorPage" extends="frontendSecondLayout" >
+        <put name="name"    value="StoreLocator" />
+        <put name="initial" value="/pages/frontend/storeLocator/init.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/storeLocator/storeLocator.jsp" />
+    </definition>-->
+<!--
+
+    <definition name="forwardToFeedBackPage" extends="frontendSecondLayout" >
+        <put name="name"    value="FeedBack" />
+        <put name="header2"    value="/pages/frontend/feedBack/feedBack.jsp" />
+    </definition>
+
+-->
+
+<!--    <definition name="forwardToSuccessFeedBackPage" extends="frontendSecondLayout" >
+        <put name="name"    value="FeedBack" />
+        <put name="header2"    value="/pages/frontend/feedBack/success.jsp" />
+    </definition>-->
+
+<!--    <definition name="forwardToRegistrationPage" extends="frontendSecondLayout" >
+        <put name="name"    value="Registration" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/register/register.jsp" />
+    </definition>-->
+
+<!--    <definition name="checkoutLayout" extends="frontendSecondLayout" >
+        <put name="name"    value="Checkout" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/checkout/checkout.jsp" />
+    </definition>-->
+
+<!--     <definition name="deliveryAddressLayout" extends="frontendSecondLayout" >
+        <put name="name"    value="DeliveryAddress" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value="/pages/frontend/mapInit.jsp"/>
+        <put name="header2"    value="/pages/frontend/checkout/address.jsp" />
+    </definition>-->
+
+<!--    <definition name="paymentInfoLayout" extends="frontendSecondLayout" >
+        <put name="name"    value="PaymentInfo" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/checkout/paymentInfo.jsp" />
+    </definition>-->
+
+<!--    <definition name="forwardToSuccessRegistrationPage" extends="frontendSecondLayout" >
+        <put name="name"    value="SuccessRegistration" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2"    value="/pages/frontend/register/success.jsp" />
+    </definition>-->
+
+<!--    <definition name="forwardToSuccessCheckOutPage" extends="frontendSecondLayout" >
+        <put name="name"    value="SuccessCheckOut" />
+        <put name="header2"    value="/pages/frontend/checkout/successCheckout.jsp" />
+    </definition>-->
+
+<!--    <definition name="forwardToFailCheckOutPage" extends="frontendSecondLayout" >
+        <put name="name"    value="FailCheckOut" />
+        <put name="header2"    value="/pages/frontend/checkout/failCheckout.jsp" />
+    </definition>-->
+
+    <definition name="forwardToViewMapPage" extends="frontendSecondLayout" >
+        <put name="name"    value="ViewMap" />
+        <put name="initial" value="/pages/2/frontend/storeLocator/init.jsp"/>
+        <put name="mapInitial" value="/pages/2/frontend/storeLocator/mapInit.jsp"/>
+        <put name="header2"    value="/pages/2/frontend/storeLocator/storeMap.jsp" />
+    </definition>
+
+
+<!--    <definition name="gotoCustomizePage" extends="frontendCustomizeLayout">
+        <put name="name"    value="Customize"/>
+        <put name="initial" value="/pages/frontend/customize/init.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="header2" value="/pages/frontend/customize/secondHeader.jsp" />
+        <put name="body"    value="/pages/frontend/customize/customizeBody.jsp" />
+    </definition>-->
+
+    <!-- ========================================================== These are the new navigation in the second phase -->
+
+
+
+        <definition name="frontendLayout" path="/pages/2/frontend/template/main/mainlayout.jsp" >
+            <put name="initial" value=""/>
+            <put name="mapInitial" value=""/>
+            <put name="header"  value="/pages/2/frontend/template/main/header.jsp" />
+            <put name="body"    value="" />
+            <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+            <put name="footer"  value="/pages/2/frontend/template/main/footer.jsp" />
+            <put name="secondfooter"  value="" />
+        </definition>
+
+        <definition name="gotoHomePage" extends="frontendLayout" >
+            <put name="name"    value="Home" />
+            <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+            <put name="body"    value="/pages/2/frontend/home/homepage.jsp" />
+            <put name="sidebar"    value="" />
+        </definition>
+
+        <definition name="gotoMenuItemsPage" extends="frontendLayout" >
+            <put name="name"    value="Menu Items" />
+            <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+            <put name="mapInitial" value=""/>
+            <put name="body"    value="/pages/2/frontend/menuitems/specialmenuitems.jsp" />
+            <put name="sidebar"    value="/pages/2/frontend/template/sidebar/fullSidebar.jsp" />
+            <put name="secondfooter"    value="/pages/2/frontend/template/order/minibasket.jsp" />
+        </definition>
+
+    <definition name="customizationlayout" path="/pages/2/frontend/template/customization/customizationlayout.jsp">
+        <put name="initial" value=""/>
+        <put name="mapInitial" value=""/>
+        <put name="header"  value="/pages/2/frontend/template/main/header.jsp" />
+        <put name="bodyHeader" value="" />
+        <put name="body"    value="" />
+        <put name="footer"  value="/pages/2/frontend/template/main/footer.jsp" />
+        <put name="secondfooter"  value="" />
+    </definition>
+
+    <definition name="gotoCustomizePage" extends="frontendLayout">
+        <put name="name" value="Customize"/>
+        <put name="initial" value="/pages/frontend/customize/init.jsp"/>
+        <put name="mapInitial" value=""/>
+        <!--<put name="bodyHeader" value="/pages/2/frontend/customize/customizationHeader.jsp" />-->
+        <put name="body" value="/pages/2/frontend/customize/customizationBody.jsp" />
+        <put name="sidebar"    value="" />
+        <put name="secondfooter" value="/pages/2/frontend/template/order/minibasket.jsp"/>
+    </definition>
+
+        <definition name="checkoutLayout" extends="frontendLayout" >
+            <put name="name"    value="Checkout" />
+            <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+            <put name="mapInitial" value=""/>
+            <put name="body"    value="/pages/2/frontend/checkout/fullbasket.jsp" />
+            <put name="sidebar"    value="" />
+            <put name="secondfooter" value=""/>
+        </definition>
+
+    <definition name="gotoQuickMenu" extends="frontendLayout" >
+        <put name="name" value="Quick Menu"/>
+        <put name="initial" value="/pages/2/frontend/menuitems/quickmenuinit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body" value="/pages/2/frontend/menuitems/quickMenuBody.jsp" />
+        <put name="sidebar" value="/pages/2/frontend/template/sidebar/dpDollarSidebar.jsp" />
+        <put name="secondfooter" value=""/>
+    </definition>
+
+    <definition name="gotoLoginPage" extends="frontendLayout" >
+        <put name="name"    value="Login" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/login/login.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/dpDollarSidebar.jsp" />
+    </definition>
+
+    <definition name="gotoFgPassPage" extends="frontendLayout" >
+        <put name="name"    value="Login" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/login/fgPassword.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/dpDollarSidebar.jsp" />
+    </definition>
+
+    <definition name="gotoResetPassPage" extends="frontendLayout" >
+        <put name="name"    value="changePassword" />
+        <put name="initial" value=""/>
+        <put name="mapInitial" value=""/>
+        <put name="body"  value="/pages/2/frontend/login/resetPassword.jsp" />
+
+
+    </definition>
+
+    <definition name="deliveryAddressLayout" extends="frontendLayout" >
+        <put name="name"    value="DeliveryAddress" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value="/pages/2/frontend/storeLocator/mapInit.jsp"/>
+        <put name="body"    value="/pages/2/frontend/checkout/deliveryInfo.jsp" />
+    </definition>
+
+
+    <definition name="gotoCateringPage" extends="frontendLayout" >
+        <put name="name"    value="Catering Service" />
+        <put name="initial" value="/pages/2/frontend/catering/cateringinit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/catering/cateringItems.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+        <put name="secondfooter" value=""/>
+    </definition>
+
+    <definition name="gotoCateringOrderPage" extends="frontendLayout" >
+        <put name="name"    value="Catering Order Service" />
+        <put name="initial" value="/pages/2/frontend/catering/cateringinit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/catering/cateringItemsOrder.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+        <put name="secondfooter" value="/pages/2/frontend/catering/cateringMiniBasket.jsp"/>
+    </definition>
+
+    <definition name="gotoCateringContactInfoPage" extends="frontendLayout" >
+        <put name="name"    value="Catering Order Service" />
+        <put name="initial" value="/pages/2/frontend/catering/cateringinit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/catering/cateringContactInfo.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+        <put name="secondfooter" value=""/>
+    </definition>
+
+    <definition name="paymentInfoLayout" extends="frontendLayout" >
+        <put name="name"    value="PaymentInfo" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/checkout/paymentInformation.jsp" />
+    </definition>
+
+    <definition name="forwardToSuccessCheckOutPage" extends="frontendLayout" >
+        <put name="name"    value="SuccessCheckOut" />
+        <put name="body"    value="/pages/2/frontend/checkout/successfulCheckout.jsp" />
+    </definition>
+
+    <definition name="forwardToFailCheckOutPage" extends="frontendLayout" >
+        <put name="name"    value="FailCheckOut" />
+        <put name="body"    value="/pages/2/frontend/checkout/failureCheckout.jsp" />
+    </definition>
+
+    <definition name="forwardToSuccessRegistrationPage" extends="frontendLayout" >
+        <put name="name"    value="SuccessRegistration" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/login/successLogin.jsp" />
+    </definition>
+
+    <definition name="forwardToRegistrationPage" extends="frontendLayout" >
+        <put name="name"    value="Registration" />
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/register/registration.jsp" />
+    </definition>
+
+    <definition name="goToMyProfile" extends="frontendLayout" >
+        <put name="name"    value="Profile" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/profile/profile.jsp" />
+        <put name="sidebar"     value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+    </definition>
+
+    <definition name="goToChangePassword" extends="frontendLayout" >
+        <put name="name"    value="changePassword" />
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/profile/changePassword.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp"/>
+    </definition>
+
+    <definition name="gotoAboutPage" extends="frontendLayout" >
+        <put name="name"    value="About" />
+        <put name="body"    value="/pages/2/frontend/about/aboutUs.jsp" />
+    </definition>
+
+    <definition name="forwardToFeedBackPage" extends="frontendLayout" >
+        <put name="name"    value="FeedBack" />
+        <put name="body"    value="/pages/2/frontend/feedBack/feedBack.jsp" />
+    </definition>
+
+    <definition name="forwardToDPDOLLARS" extends="frontendLayout" >
+        <put name="name"    value="DPDOLLARS" />
+        <put name="body"    value="/pages/2/frontend/about/DPDollars.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/simpleSidebar.jsp" />
+    </definition>
+
+    <definition name="forwardToStoreLocatorPage" extends="frontendLayout" >
+        <put name="name"    value="StoreLocator" />
+        <put name="initial" value="/pages/2/frontend/storeLocator/init.jsp"/>
+        <put name="mapInitial" value="/pages/2/frontend/storeLocator/mapInit.jsp"/>
+        <put name="body"    value="/pages/2/frontend/storeLocator/storeLocator.jsp" />
+        <put name="sidebar"    value="" />
+    </definition>
+    <definition name="gotoFranchisingPage" extends="frontendLayout" >
+        <put name="name"    value="Franchising" />
+        <put name="body"    value="/pages/2/frontend/franchising/franchising.jsp" />
+    </definition>
+
+    <definition name="goToOrderHistory" extends="frontendLayout" >
+        <put name="name"    value="Order History" />
+        <put name="initial" value="/pages/2/frontend/order/orderInt.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/order/orderhistory/orderhistory.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/fullSidebar.jsp" />
+    </definition>
+
+    <definition name="goToDpDollarsHistory" extends="frontendLayout" >
+        <put name="name"    value="My Dollars History" />
+        <put name="initial" value="/pages/2/frontend/dpDollars/dpDollarsInt.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/frontend/dpDollars/dpDollarsHistory.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/fullSidebar.jsp" />
+    </definition>
+    <!--============================================================= backend layout -->
+    <definition name="backendLayout" path="/pages/2/backend/backendLayout.jsp">
+        <put name="name" value="Backend"/>
+        <put name="initial" value=""/>
+        <put name="header" value="/pages/2/backend/backendheader.jsp" />
+        <put name="leftmenu" value="/pages/2/backend/backendMenu.jsp" />
+        <put name="body" value="" />
+        <put name="footer" value="/pages/2/backend/backendfooter.jsp" />
+    </definition>
+
+
+    <definition name="gotoBackendHomePage" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="body" value="/pages/2/backend/backendHomePage.jsp"/>
+    </definition>
+
+
+    <definition name="gotoDollarDisplay" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/dpDollar/dollarDisplay.jsp"/>
+    </definition>
+
+    <definition name="gotoStandardCampaign" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/campaign/standardCampaign.jsp"/>
+    </definition>
+
+    <definition name="gotoPostalCampaign" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/campaign/postalCodeCampaign.jsp"/>
+    </definition>
+
+    <definition name="gotoBirthdayCampaign" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="initial" value="/pages/frontend/home/homeonload.jsp"/>
+        <put name="body" value="/pages/2/backend/campaign/birthdayCampaign.jsp"/>
+    </definition>
+
+    <definition name="gotoPopular" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/popular/popular.jsp"/>
+    </definition>
+
+    <definition name="gotoSlide" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/slide/slide.jsp"/>
+    </definition>
+
+    <definition name="gotoReloadData" extends="backendLayout">
+        <put name="name" value="Home"/>
+        <put name="body" value="/pages/2/backend/dpDollar/reloadData.jsp"/>
+    </definition>
+
+    <definition name="goToTestServices" extends="backendLayout">
+        <put name="body" value="/pages/2/frontend/device/testServices.jsp"/>
+    </definition>
+
+    <definition name="gotoChangedEmailCampaign" extends="backendLayout">
+        <put name="body" value="/pages/2/backend/campaign/maskedEmails.jsp"/>
+    </definition>
+
+    <definition name="gotoShowResultStandardCampaign" extends="backendLayout">
+        <put name="body" value="/pages/2/backend/campaign/showResultStandardCampaign.jsp"/>
+        <put name="header" value="" />
+        <put name="leftmenu" value="" />
+        <put name="footer" value="" />
+    </definition>
+
+    <definition name="gotoShowTemplateStandardCampaign"  extends="customizationlayout">
+        <put name="header"  value="" />
+        <put name="bodyHeader" value="" />
+        <put name="body" value="/pages/2/backend/campaign/showTemplateStandardCampaign.jsp"/>
+        <put name="footer"  value="" />
+        <put name="secondfooter"  value="" />
+    </definition>
+
+    <definition name="gotoSubscribeUserForm" extends="frontendLayout" >
+        <put name="initial" value="/pages/frontend/checkout/checkoutInit.jsp"/>
+        <put name="mapInitial" value=""/>
+        <put name="body"    value="/pages/2/backend/campaign/subscribeUserForm.jsp" />
+        <put name="sidebar"    value="/pages/2/frontend/template/sidebar/dpDollarSidebar.jsp" />
+    </definition>
+
+
+    <definition name="gotoForbidden" extends="frontendLayout" >
+        <put name="header"  value="/pages/2/frontend/template/main/header.jsp" />
+        <put name="bodyHeader" value="" />
+        <put name="name"    value="Forbidden" />
+        <put name="body"    value="/forbidden.jsp" />
+        <put name="footer"  value="/pages/2/frontend/template/main/footer.jsp" />
+    </definition>
+
+
+</tiles-definitions>

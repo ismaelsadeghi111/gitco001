@@ -1,0 +1,440 @@
+<%@ page import="com.sefryek.doublepizza.core.Constant" %>
+<%@ page import="com.sefryek.doublepizza.model.Category" %>
+<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: ehsan
+  Date: Mar 29, 2012
+  Time: 10:47:24 AM
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String context = request.getContextPath();
+%>
+
+
+<script type="text/javascript">
+
+var lastEnteredStreetNo = '';
+var lastEnteredPostalCode1 = '';
+var lastEnteredPostalCode2 = '';
+
+var counter = 0;
+
+
+function setOrderCouponCodeOnServer() {
+    var el = document.getElementById('discount_name');
+    if (el != null) {
+        var couponCode = el.value;
+
+        $.ajax({
+            method: 'POST',
+            url: '<%=context%>/checkout.do',
+            data: {operation: 'setOrderCouponCode', couponCode : couponCode},
+            success: function(res) {
+            },
+            failure: function() {
+                alert('FAILURE');
+            }
+        });
+    }
+}
+
+
+function gotoLoginPage(isFromCheckout, dontShowSuggestionsAgain) {
+    var myForm = document.createElement('form');
+    myForm.setAttribute('method', 'post');
+    myForm.setAttribute('action', '<%=context%>/frontend.do');
+    document.body.appendChild(myForm);
+
+    var operation = document.createElement('input');
+    operation.setAttribute('type', 'hidden');
+    operation.setAttribute('name', 'operation');
+    operation.setAttribute('value', 'goToLoginPage');
+
+    if (dontShowSuggestionsAgain){
+        var dontShowSuggestionsAgainField = document.createElement('input');
+        dontShowSuggestionsAgainField.setAttribute('type', 'hidden');
+        dontShowSuggestionsAgainField.setAttribute('name', 'dontShowSuggestionsAgin');
+        dontShowSuggestionsAgainField.setAttribute('value', 'true');
+        myForm.appendChild(dontShowSuggestionsAgainField);
+    }
+
+    var latestUrl = document.createElement('input');
+    latestUrl.setAttribute('type', 'hidden');
+    latestUrl.setAttribute('name', '<%=Constant.LOGIN_OR_REGIISTER_SOURCE%>');
+    latestUrl.setAttribute('value', isFromCheckout);
+
+    myForm.appendChild(operation);
+    myForm.appendChild(latestUrl);
+
+    myForm.submit();
+}
+
+function logout() {
+    var currentUrl = window.location;
+    window.location.href = '<%=context%>/logout.do?operation=logout&<%=Constant.LATEST_USER_URL%>=' + currentUrl;
+}
+
+function continueShopping() {
+    var myForm = document.createElement('form');
+    myForm.setAttribute('method', 'post');
+    myForm.setAttribute('action', '<%=context%>/frontend.do');
+    document.body.appendChild(myForm);
+
+
+    var hid_operation = document.createElement('input');
+    hid_operation.setAttribute('type', 'hidden');
+    hid_operation.setAttribute('name', 'operation');
+    hid_operation.setAttribute('value', 'goToMainPage');
+
+    var hid_param = document.createElement('input');
+    hid_param.setAttribute('type', 'hidden');
+    hid_param.setAttribute('name', 'fromContinueShopping');
+    hid_param.setAttribute('value', 'true');
+
+    myForm.appendChild(hid_operation);
+    myForm.appendChild(hid_param);
+
+    myForm.submit();
+}
+
+function removeItemFromBasket(basketItemId, basketItemType, trId) {
+    $.ajax({
+        type    :'POST',
+        url     : '<%=context%>/frontend.do',
+        data    :{operation: 'removeItemFromBasket', basketItemId: basketItemId, basketItemType: basketItemType},
+        success:function(res) {
+            if (res != "") {
+                var element = document.getElementById(trId);
+                element.parentNode.removeChild(element);
+
+                var itemNumEl = document.getElementById('item_num');
+                var itemNumber = itemNumEl.innerHTML;
+                if (itemNumber != 0) {
+                    itemNumber--;
+                    itemNumEl.innerHTML = itemNumber;
+                }
+
+
+                var cartItemsTableEl = document.getElementById('cart_items').getElementsByTagName('tr');
+                if (cartItemsTableEl.length < 1) {
+                    alert('items lower than 0');
+                }
+            }
+        },
+        failure: function() {
+            alert('FAILURE');
+        }
+    });
+}
+
+function removeItemUpdateCheckout(basketItemId, basketItemType) {
+    $.ajax({
+        type: 'POST',
+        url: '<%=context%>/frontend.do',
+        data: {operation: 'removeItemUpdateCheckout', basketItemId: basketItemId, basketItemType: basketItemType},
+        success: function(res) {
+            document.getElementById('center_column').innerHTML = res;
+
+            var itemNumEl = document.getElementById('item_num');
+            var itemNumber = itemNumEl.innerHTML;
+            if (itemNumber != 0) {
+                itemNumber--;
+                itemNumEl.innerHTML = itemNumber;
+                var itemCount = document.getElementById("cart_block_shipping_cost");
+                if (itemCount != null)
+                    itemCount.innerHTML = itemNumber;
+            }
+
+            var itemPriceFrom = document.getElementById("checkout_prices");
+            if (itemPriceFrom != null) {
+                var itemPriceTo = document.getElementById("cart_block_total");
+                if (itemPriceTo != null)
+                    itemPriceTo.innerHTML = itemPriceFrom.innerHTML;
+            }
+
+
+            var cartItemsTableEl = document.getElementById('cart_items').getElementsByTagName('tr');
+            if (cartItemsTableEl.length < 1) {
+                setCookie("homeAlert", "fromEmptyCart", 1);
+                var path = getHomeUrl();
+                location.href = path;
+            }
+
+
+        },
+        failure: function() {
+        }
+    });
+
+}
+
+function gotoCustomizePage(paramName, type, id, groupId, itemElem) {
+    var myForm = document.createElement('form');
+    myForm.setAttribute('method', 'POST');
+    myForm.setAttribute('action', '<%=context%>/frontend.do');
+    document.body.appendChild(myForm);
+
+    var hid_operation = document.createElement('input');
+    hid_operation.setAttribute('type', 'hidden');
+    hid_operation.setAttribute('name', 'operation');
+    hid_operation.setAttribute('value', 'goToCustomizePage');
+
+    var hid_paramName = document.createElement('input');
+    hid_paramName.type = 'hidden';
+    hid_paramName.setAttribute('type', 'hidden');
+    hid_paramName.setAttribute('name', paramName);
+    hid_paramName.setAttribute('value', id);
+
+    var hid_type = document.createElement('input');
+    hid_type.setAttribute('type', 'hidden');
+    hid_type.setAttribute('name', 'type');
+    hid_type.setAttribute('value', type);
+
+    var hid_groupId = document.createElement('input');
+    hid_groupId.setAttribute('type', 'hidden');
+    hid_groupId.setAttribute('name', 'groupId');
+    hid_groupId.setAttribute('value', groupId);
+
+    var hid_catId = document.createElement('input');
+    hid_catId.setAttribute('type', 'hidden');
+    hid_catId.setAttribute('name', 'catId');
+    hid_catId.setAttribute('value', '<%=((Category)session.getAttribute(Constant.LAST_CATEGORY)).getId()%>');
+
+    var hid_menuName = document.createElement('input');
+    hid_menuName.setAttribute('type', 'hidden');
+    hid_menuName.setAttribute('name', 'menuName');
+    hid_menuName.setAttribute('value', '<%=session.getAttribute(Constant.MENU_NAME)%>');
+
+    var hide_itemElem = document.createElement('input');
+    hide_itemElem.setAttribute('type', 'hidden');
+    hide_itemElem.setAttribute('name', 'itemToClick');
+    hide_itemElem.setAttribute('value', itemElem);
+
+
+    myForm.appendChild(hid_operation);
+    myForm.appendChild(hid_catId);
+    myForm.appendChild(hid_paramName);
+    myForm.appendChild(hid_type);
+    myForm.appendChild(hid_groupId);
+    myForm.appendChild(hid_menuName);
+    myForm.appendChild(hide_itemElem);
+
+    myForm.submit();
+}
+
+function gotoCustomizePage2(clickedItem) {
+    window.location = '<%=context%>/frontend.do?operation=goToCustomizePage&' +
+                      'groupId=0&catId=11&type=COMBINED&combinedId=0&menuName=Menu&itemToClick=' + clickedItem;
+}
+
+function showBasket() {
+    $.ajax({
+        method: 'POST',
+        url: '<%=context%>/locale.do',
+        data: {method: 'showBasket'},
+        success: function(res) {
+            alert(res);
+        },
+        failure: function() {
+            alert('FAILURE');
+        }
+
+    });
+}
+
+function postalCodeAutoFocus1() {
+    var valueLengh = document.getElementById("postalCode1").value.length;
+    if (valueLengh >= 3)
+        document.getElementById("postalCode2").focus();
+}
+
+function postalCodeAutoFocus2() {
+    var valueLengh = document.getElementById("postalCode2").value.length;
+    if (valueLengh >= 3)
+        document.getElementById("streetNo").focus();
+}
+
+function autoCompleteStreet(streetNo, postalcode_1st, postalcode_2nd) {
+
+    var digitRegex = /^\s*\d+\s*$/;
+
+    var isAnyFieldEmpty = true;
+    var isAnyDataChanged = false;
+
+    if (streetNo != null && postalcode_1st != null && postalcode_2nd != null && streetNo != "" && postalcode_1st != "" && postalcode_2nd != "" && streetNo.search(digitRegex) != -1) {
+        isAnyFieldEmpty = false;
+    }
+    if (lastEnteredStreetNo != streetNo || lastEnteredPostalCode1 != postalcode_1st || lastEnteredPostalCode2 != postalcode_2nd) {
+        isAnyDataChanged = true;
+    }
+
+    if (!isAnyFieldEmpty && isAnyDataChanged) {
+        $.ajax({
+            method: 'POST',
+            url: '<%=context%>/finalcheckout.do',
+            data:{
+                operation: 'getStreetName',
+                postalCode: postalcode_1st + ' ' + postalcode_2nd,
+                streetNo: streetNo
+            },
+            success: function(res) {
+                var streetName = '';
+                var city = '';
+
+                var strArray = res.split('*');
+                streetName = strArray[0];
+                city = strArray[1];
+
+                if (document.getElementById('streetNo').value == streetNo) {
+                    if (city == 'null' && streetName == 'null') {
+                        document.getElementById('street').setAttribute('value', streetName);
+                        document.getElementById('street').value = '';
+                        document.getElementById('city').setAttribute('value', city);
+                        document.getElementById('city').value = '';
+
+
+                    } else if (city != 'null' && streetName == 'null') {
+                        document.getElementById('street').setAttribute('value', streetName);
+                        document.getElementById('street').value = '';
+                        document.getElementById('city').setAttribute('value', city);
+                        document.getElementById('city').value = city;
+
+                    } else if (city == 'null' && streetName != 'null') {
+                        document.getElementById('street').value = streetName;
+                        document.getElementById('city').setAttribute('value', city);
+                        document.getElementById('city').value = '';
+
+                    } else {
+                        $('#street').css('color', '#000000');
+                        $('#city').css('color', '#000000');
+                        document.getElementById('street').setAttribute('value', streetName);
+                        document.getElementById('street').value = streetName;
+                        document.getElementById('city').setAttribute('value', city);
+                        document.getElementById('city').value = city;
+                    }
+
+                }
+            },
+            failure: function() {
+                document.getElementById('street').removeAttribute('value');
+            }
+        });
+
+    } else {
+        if (isAnyFieldEmpty) {
+            document.getElementById('street').setAttribute('value', -1);
+            document.getElementById('street').value = null;
+
+            document.getElementById('city').setAttribute('value', 'null');
+            document.getElementById('city').value = null;
+        }
+    }
+
+    lastEnteredStreetNo = streetNo;
+    lastEnteredPostalCode1 = postalcode_1st;
+    lastEnteredPostalCode2 = postalcode_2nd;
+}
+
+function resetInput() {
+    document.getElementById('street').value = '';
+    $('#street').css('color', '#000000');
+
+    document.getElementById('city').value = '';
+    $('#city').css('color', '#000000');
+
+}
+
+function changeQuantity(sender, diff) {
+
+    var quantityEl = $($(sender).parent()).children('input')[0];
+
+    if ((parseInt(quantityEl.value) + diff ) < 0) {
+        quantityEl.value = 0;
+
+    } else {
+        quantityEl.value = (parseInt(quantityEl.value) + diff );
+    }
+}
+
+function goForCheckOut(suggestionsHasBennReviewed) {
+
+    if (suggestionsHasBennReviewed) {
+        gotoLoginPage('true', false);
+        setOrderCouponCodeOnServer();
+
+    } else {
+        showSuggestions();
+    }
+
+}
+
+function showSuggestions() {
+    $("#suggestions").dialog('option', 'title', '<bean:message key="suggestions.form.title"/>');
+    $("#suggestions").dialog('open');
+}
+
+$(function() {
+    $("#suggestions").dialog({
+        bgiframe: true,
+        width: 650,
+        modal: true,
+        resizable:false,
+        autoOpen:false
+    });
+});
+
+function addSuggestions(){
+   var selectedItems = "";
+   $('#suggestionitems tr').each(
+           function(index, sender){
+               selectedItems += $(sender).find('input[name=quantity]')[0].value;
+               selectedItems += ":";
+               selectedItems += ($(sender).find('input[name=quantity_input]')[0].value) + ',';
+           } );
+
+     $.ajax({
+            method: 'POST',
+            url: '<%=context%>/checkout.do',
+            data: {operation: 'addSuggestionsToBasket', selectedSuggestions : selectedItems.toString()},
+            success: function(res) {
+                $("#suggestions").dialog('close');
+
+                document.getElementById('center_column').innerHTML = res;
+
+                var count = $('tr.cart_item').length;
+                var price = $('#checkout_price_info #checkout_prices')[3].innerHTML;
+
+                var itemNumEl = document.getElementById('item_num');
+                if (itemNumEl != null)
+                    itemNumEl.innerHTML = count;
+
+                itemNumEl = document.getElementById("cart_block_shipping_cost");
+                if (itemNumEl != null)
+                    itemNumEl.innerHTML = count;
+
+                var itemPriceTo = document.getElementById("cart_block_total");
+                if (itemPriceTo != null)
+                    itemPriceTo.innerHTML = price; 
+
+                var itemPriceTo = document.getElementById("account_info");
+                if (itemPriceTo != null)
+                    itemPriceTo.innerHTML = '<bean:message key="label.rightmenu.header.total.price"/> ' + price;
+
+                var cartItemsTableEl = document.getElementById('cart_items').getElementsByTagName('tr');
+                if (cartItemsTableEl.length < 1) {
+                    setCookie("homeAlert", "fromEmptyCart", 1);
+                    var path = getHomeUrl();
+                    location.href = path;
+                }
+
+            },
+            failure: function() {
+                $("#suggestions").dialog('close');
+                alert('FAILURE');
+            }
+        });
+}
+
+</script>

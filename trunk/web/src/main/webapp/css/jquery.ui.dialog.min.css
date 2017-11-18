@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  <head>
+    <title>
+      jquery.ui.dialog.min.css in src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified
+     – Comt
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--[if IE]><script type="text/javascript">
+      if (/^#__msie303:/.test(window.location.hash))
+        window.location.replace(window.location.hash.replace(/^#__msie303:/, '#'));
+    </script><![endif]-->
+        <link rel="search" href="/search" />
+        <link rel="help" href="/wiki/TracGuide" />
+        <link rel="alternate" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;format=txt" type="text/plain" title="Plain Text" /><link rel="alternate" href="/export/0c625ce49a811f30da3150b93d26e75acbafb8dd/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css" type="text/css; charset=iso-8859-15" title="Original Format" />
+        <link rel="up" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css" />
+        <link rel="start" href="/wiki" />
+        <link rel="stylesheet" href="/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/chrome/common/css/code.css" type="text/css" /><link rel="stylesheet" href="/pygments/trac.css" type="text/css" /><link rel="stylesheet" href="/chrome/common/css/browser.css" type="text/css" />
+        <link rel="prev" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=2ee166f109ae47154fe30163b268ae6f6f427bf8" title="Revision 534:2ee166f109ae" />
+        <link rel="shortcut icon" href="/chrome/common/trac.ico" type="image/x-icon" />
+        <link rel="icon" href="/chrome/common/trac.ico" type="image/x-icon" />
+      <link type="application/opensearchdescription+xml" rel="search" href="/search/opensearch" title="Search Comt" />
+    <script type="text/javascript" src="/chrome/common/js/jquery.js"></script><script type="text/javascript" src="/chrome/common/js/babel.js"></script><script type="text/javascript" src="/chrome/common/js/messages/en_US.js"></script><script type="text/javascript" src="/chrome/common/js/trac.js"></script><script type="text/javascript" src="/chrome/common/js/search.js"></script>
+    <!--[if lt IE 7]>
+    <script type="text/javascript" src="/chrome/common/js/ie_pre7_hacks.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/chrome/common/js/folding.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".trac-toggledeleted").show().click(function() {
+                  $(this).siblings().find(".trac-deleted").toggle();
+                  return false;
+        }).click();
+        $("#jumploc input").hide();
+        $("#jumploc select").change(function () {
+          this.parentNode.parentNode.submit();
+        });
+          $('#preview table.code').enableCollapsibleColumns($('#preview table.code thead th.content'));
+      });
+    </script>
+  </head>
+  <body>
+    <div id="banner">
+      <div id="header">
+        <a id="logo" href="/"><img src="/chrome/site/logo-co-ment-300x53.png" alt="Comt" /></a>
+      </div>
+      <form id="search" action="/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input type="text" id="proj-search" name="q" size="18" value="" />
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <div id="metanav" class="nav">
+    <ul>
+      <li class="first"><a href="/login">Login</a></li><li><a href="/prefs">Preferences</a></li><li><a href="/wiki/TracGuide">Help/Guide</a></li><li><a href="/about">About Trac</a></li><li class="last"><a href="/register">Register</a></li>
+    </ul>
+  </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first"><a href="/wiki">Wiki</a></li><li><a href="/timeline">Timeline</a></li><li><a href="/roadmap">Roadmap</a></li><li class="active"><a href="/browser">Browse Source</a></li><li><a href="/report">View Tickets</a></li><li class="last"><a href="/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+          <ul>
+              <li class="first"><span>&larr; <a class="prev" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=2ee166f109ae47154fe30163b268ae6f6f427bf8" title="Revision 534:2ee166f109ae">Previous Revision</a></span></li><li><a href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css">Latest Revision</a></li><li><span class="missing">Next Revision &rarr;</span></li><li><a href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?annotate=blame&amp;rev=0c625ce49a811f30da3150b93d26e75acbafb8dd" title="Annotate each line with the last changed revision (this can be time consuming...)">Blame</a></li><li class="last"><a href="/log/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd">Revision Log</a></li>
+          </ul>
+        <hr />
+      </div>
+    <div id="content" class="browser">
+          <h1>
+<a class="pathentry first" href="/browser?order=name" title="Go to repository root">source:</a>
+<a class="pathentry" href="/browser/src?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View src">src</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View cm">cm</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View media">media</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View js">js</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View lib">lib</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View jquery">jquery</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View js">js</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View jquery-ui-1.10.3.custom">jquery-ui-1.10.3.custom</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View development-bundle">development-bundle</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View themes">themes</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View smoothness">smoothness</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View minified">minified</a><span class="pathentry sep">/</span><a class="pathentry" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;order=name" title="View jquery.ui.dialog.min.css">jquery.ui.dialog.min.css</a>
+<span class="pathentry sep">@</span>
+  <a class="pathentry" href="/changeset/536" title="View changeset 536:0c625ce49a81">536:0c625ce49a81</a>
+<br style="clear: both" />
+</h1>
+        <div id="jumprev">
+          <form action="" method="get">
+            <div>
+              <label for="rev" title="Hint: clear the field to view latest revision">
+                View revision:</label>
+              <input type="text" id="rev" name="rev" value="0c625ce49a811f30da3150b93d26e75acbafb8dd" size="6" />
+            </div>
+          </form>
+        </div>
+        <div id="jumploc">
+          <form action="" method="get">
+            <div class="buttons">
+              <label for="preselected">Visit:</label>
+              <select id="preselected" name="preselected">
+                <option selected="selected"></option>
+                <optgroup label="branches">
+                  <option value="/browser/?rev=565%3A95a5c06c4008">default (tip)</option><option value="/browser/?rev=259%3A0371caf8bcc6">preserve_html</option>
+                </optgroup><optgroup label="tags">
+                  <option value="/browser/?rev=565%3A95a5c06c4008">tip</option><option value="/browser/?rev=499%3A805e08ea57b1">2.5.0</option><option value="/browser/?rev=402%3A15dc50d16090">1.3.0</option><option value="/browser/?rev=333%3Af080de4cad76">v1.0.5</option>
+                </optgroup>
+              </select>
+              <input type="submit" value="Go!" title="Jump to the chosen preselected path" />
+            </div>
+          </form>
+        </div>
+      <table id="info" summary="Revision info">
+        <tr>
+          <th scope="col">Revision <a href="/changeset/536">536:0c625ce49a81</a>,
+            <span title="1051 bytes">1.0 KB</span>
+            checked in by Simon Descarpentries &lt;sid@…&gt;, <a class="timeline" href="/timeline?from=2013-09-20T16%3A28%3A40%2B02%3A00&amp;precision=second" title="2013-09-20T16:28:40+02:00 in Timeline">3 months</a> ago
+            (<a href="/changeset/536/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css">diff</a>)</th>
+        </tr>
+        <tr>
+          <td class="message searchable">
+              <ul><li>updating jQuery (1.3.2 -&gt; 1.10.2), jQuery UI, jQuery modules
+</li><li>[text_view_frame.html] Add some JS driven CSS tricks for iPad
+</li><li>[text_view_frame.html] move throbber's hiding-call in nested text_view_comments iframe onload signal (so it works with jQuery 1.10.2 and the hiding timing is good)
+</li><li>[text_view_frame.html][base.html] factorize req_yui.html et req_jquery.html
+</li><li>[main_tabs][text_tabs][f_client-min.js] rewrite jQuery UI Tabs API calls select in active
+</li><li>[base.css] CSS fix grey frame appearence for all tabs
+</li><li>hg remove bgiframe -&gt; not loaded in templates anymore
+</li><li>hg remove header_custom.html -&gt; the file has been empty since 4 years
+</li><li>hg remove controls.html -&gt; the file has been empty since 4 years
+</li></ul>
+          </td>
+        </tr>
+      </table>
+      <div id="preview" class="searchable">
+        
+  <table class="code"><thead><tr><th class="lineno" title="Line numbers">Line</th><th class="content"> </th></tr></thead><tbody><tr><th id="L1"><a href="#L1">1</a></th><td><span class="c">/*! jQuery UI - v1.10.3 - 2013-09-16</span></td></tr><tr><th id="L2"><a href="#L2">2</a></th><td><span class="c">* http://jqueryui.com</span></td></tr><tr><th id="L3"><a href="#L3">3</a></th><td><span class="c">* Copyright 2013 jQuery Foundation and other contributors; Licensed MIT */</span></td></tr><tr><th id="L4"><a href="#L4">4</a></th><td></td></tr><tr><th id="L5"><a href="#L5">5</a></th><td><span class="nc">.ui-dialog</span><span class="p">{</span><span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span><span class="k">top</span><span class="o">:</span><span class="m">0</span><span class="p">;</span><span class="k">left</span><span class="o">:</span><span class="m">0</span><span class="p">;</span><span class="k">padding</span><span class="o">:.</span><span class="m">2em</span><span class="p">;</span><span class="k">outline</span><span class="o">:</span><span class="m">0</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-titlebar</span><span class="p">{</span><span class="k">padding</span><span class="o">:.</span><span class="m">4em</span> <span class="m">1em</span><span class="p">;</span><span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-title</span><span class="p">{</span><span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span><span class="k">margin</span><span class="o">:.</span><span class="m">1em</span> <span class="m">0</span><span class="p">;</span><span class="k">white-space</span><span class="o">:</span><span class="k">nowrap</span><span class="p">;</span><span class="k">width</span><span class="o">:</span><span class="m">90</span><span class="o">%</span><span class="p">;</span><span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="p">;</span><span class="k">text</span><span class="o">-</span><span class="k">overflow</span><span class="o">:</span>ellipsis<span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-titlebar-close</span><span class="p">{</span><span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span><span class="k">right</span><span class="o">:.</span><span class="m">3em</span><span class="p">;</span><span class="k">top</span><span class="o">:</span><span class="m">50</span><span class="o">%</span><span class="p">;</span><span class="k">width</span><span class="o">:</span><span class="m">21px</span><span class="p">;</span><span class="k">margin</span><span class="o">:-</span><span class="m">10px</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span><span class="k">padding</span><span class="o">:</span><span class="m">1px</span><span class="p">;</span><span class="k">height</span><span class="o">:</span><span class="m">20px</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-content</span><span class="p">{</span><span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span><span class="k">border</span><span class="o">:</span><span class="m">0</span><span class="p">;</span><span class="k">padding</span><span class="o">:.</span><span class="m">5em</span> <span class="m">1em</span><span class="p">;</span><span class="k">background</span><span class="o">:</span><span class="k">none</span><span class="p">;</span><span class="k">overflow</span><span class="o">:</span><span class="k">auto</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-buttonpane</span><span class="p">{</span><span class="k">text-align</span><span class="o">:</span><span class="k">left</span><span class="p">;</span><span class="k">border-width</span><span class="o">:</span><span class="m">1px</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span><span class="k">background-image</span><span class="o">:</span><span class="k">none</span><span class="p">;</span><span class="k">margin-top</span><span class="o">:.</span><span class="m">5em</span><span class="p">;</span><span class="k">padding</span><span class="o">:.</span><span class="m">3em</span> <span class="m">1em</span> <span class="m">.5em</span> <span class="m">.4em</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-buttonpane</span> <span class="nc">.ui-dialog-buttonset</span><span class="p">{</span><span class="k">float</span><span class="o">:</span><span class="k">right</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-dialog-buttonpane</span> <span class="nt">button</span><span class="p">{</span><span class="k">margin</span><span class="o">:.</span><span class="m">5em</span> <span class="m">.4em</span> <span class="m">.5em</span> <span class="m">0</span><span class="p">;</span><span class="k">cursor</span><span class="o">:</span><span class="k">pointer</span><span class="p">}</span><span class="nc">.ui-dialog</span> <span class="nc">.ui-resizable-se</span><span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">12px</span><span class="p">;</span><span class="k">height</span><span class="o">:</span><span class="m">12px</span><span class="p">;</span><span class="k">right</span><span class="o">:-</span><span class="m">5px</span><span class="p">;</span><span class="k">bottom</span><span class="o">:-</span><span class="m">5px</span><span class="p">;</span><span class="k">background-position</span><span class="o">:</span><span class="m">16px</span> <span class="m">16px</span><span class="p">}</span><span class="nc">.ui-draggable</span> <span class="nc">.ui-dialog-titlebar</span><span class="p">{</span><span class="k">cursor</span><span class="o">:</span>move<span class="p">}</span></td></tr></tbody></table>
+
+      </div>
+      <div id="help"><strong>Note:</strong> See <a href="/wiki/TracBrowser">TracBrowser</a>
+        for help on using the repository browser.</div>
+      <div id="anydiff">
+        <form action="/diff" method="get">
+          <div class="buttons">
+            <input type="hidden" name="new_path" value="/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css" />
+            <input type="hidden" name="old_path" value="/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css" />
+            <input type="hidden" name="new_rev" value="0c625ce49a811f30da3150b93d26e75acbafb8dd" />
+            <input type="hidden" name="old_rev" value="0c625ce49a811f30da3150b93d26e75acbafb8dd" />
+            <input type="submit" value="View changes..." title="Select paths and revs for Diff" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="first">
+          <a rel="nofollow" href="/browser/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css?rev=0c625ce49a811f30da3150b93d26e75acbafb8dd&amp;format=txt">Plain Text</a>
+        </li><li class="last">
+          <a rel="nofollow" href="/export/0c625ce49a811f30da3150b93d26e75acbafb8dd/src/cm/media/js/lib/jquery/js/jquery-ui-1.10.3.custom/development-bundle/themes/smoothness/minified/jquery.ui.dialog.min.css">Original Format</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <div id="footer" lang="en" xml:lang="en"><hr />
+      <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/chrome/common/trac_logo_mini.png" height="30" width="107" alt="Trac Powered" /></a>
+      <p class="left">
+        Powered by <a href="/about"><strong>Trac 0.12.5</strong></a><br />
+        By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+      </p>
+      <p class="right">Visit the Trac open source project at<br /><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a></p>
+    </div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.sopinspace.net/" : "http://piwik.sopinspace.net/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 19);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://piwik.sopinspace.net/piwik.php?idsite=19" style="border:0" alt="Project-Id-Version: Trac 0.12
+Report-Msgid-Bugs-To: trac-dev@googlegroups.com
+POT-Creation-Date: 2008-01-30 09:20+0100
+PO-Revision-Date: 2010-07-19 23:05+0200
+Last-Translator: Jeroen Ruigrok van der Werven &lt;asmodai@in-nomine.org&gt;
+Language-Team: en_US &lt;trac-dev@googlegroups.com&gt;
+Plural-Forms: nplurals=2; plural=(n != 1)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Generated-By: Babel 0.9.6
+" /></p></noscript>
+<!-- End Piwik Tag -->
+  </body>
+</html>

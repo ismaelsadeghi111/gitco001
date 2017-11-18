@@ -1,0 +1,13 @@
+<html>
+<body>
+<h3>Hi ${email.name}, welcome to the Chipping Sodbury On-the-Hill message boards!</h3>
+<p>${email.imagePath}</p>
+<p>${email.webDescFR}</p>
+<p>${email.webDescEN}</p>
+
+<div>
+   Your email address is <a href="mailto:${email.recipientEmailAddress}"></a>.
+</div>
+</body>
+
+</html>

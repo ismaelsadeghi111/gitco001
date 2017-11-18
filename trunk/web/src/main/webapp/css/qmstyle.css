@@ -1,0 +1,272 @@
+
+img {
+    border: 0
+}
+
+.fr {
+    float: right
+}
+
+.fl {
+    float: left
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    display: block
+}
+
+.cBoth {
+    clear: both
+}
+
+.table {
+    display: table;
+    margin: 0 auto
+}
+
+::-webkit-input-placeholder {
+    color: #666;
+    text-shadow: 0 1px 0 #FFF;
+    font-style: italic;
+    font-size: 11px
+}
+
+:-moz-placeholder {
+    color: #666;
+    text-shadow: 0 1px 0 #FFF;
+    font-style: italic;
+    font-size: 11px
+}
+
+body {
+    background: url(./img/bg.png) repeat 0 0 #fff;
+
+    cursor: default
+}
+
+div#wrapper {
+    width: 800px;
+    border: 0 solid #BEBCBC;
+    margin: 50px 0 0;
+    background: url(./img/bg2.png) #eee repeat top left;
+    -webkit-box-shadow: 0 0 5px 1px #DDD;
+    -moz-box-shadow: 0 0 5px 1px #DDD;
+    box-shadow: 0 0 5px 1px #DDD, 0 0 10px 1px rgba(0, 0, 0, .5) inset;
+    display: inline-block
+}
+
+div.footer {
+    text-align: center;
+    margin: 0 auto 25px;
+    width: 488px
+}
+
+div.footer a, div.footer a:visited {
+    text-decoration: none;
+    color: #09f
+}
+
+div.footer a:hover {
+    color: #f80
+}
+
+div#navigation {
+    width: 100%;
+    display: block;
+    text-align: center;
+    height: 99px;
+    z-index: 1000;
+    position: relative
+}
+
+div#navigation div.spacer {
+    display: inline-block;
+    width: 82%;
+    vertical-align: top;
+    -webkit-box-shadow: 0 0 5px 0 rgba(19, 19, 20, .35);
+    -moz-box-shadow: 0 0 5px 0 rgba(19, 19, 20, .35);
+    box-shadow: 0 0 5px 0 rgba(19, 19, 20, .35);
+    height: 24px;
+    margin-left: -94px;
+    margin-top: 13px;
+    background-color: #acd6e4;
+    background-image: -webkit-linear-gradient(top, rgba(89, 87, 88, .35) 3%, rgba(112, 111, 112, .35) 4%, rgba(253, 252, 253, .22) 10%, rgba(248, 247, 248, .17) 12%, rgba(137, 137, 136, .28) 61%, rgba(222, 222, 222, .35) 90%, rgba(248, 248, 248, .35) 99%, rgba(251, 251, 251, .35));
+    background-image: -moz-linear-gradient(top, rgba(89, 87, 88, .35) 3%, rgba(112, 111, 112, .35) 4%, rgba(253, 252, 253, .22) 10%, rgba(248, 247, 248, .17) 12%, rgba(137, 137, 136, .28) 61%, rgba(222, 222, 222, .35) 90%, rgba(248, 248, 248, .35) 99%, rgba(251, 251, 251, .35));
+    background-image: -o-linear-gradient(top, rgba(89, 87, 88, .35) 3%, rgba(112, 111, 112, .35) 4%, rgba(253, 252, 253, .22) 10%, rgba(248, 247, 248, .17) 12%, rgba(137, 137, 136, .28) 61%, rgba(222, 222, 222, .35) 90%, rgba(248, 248, 248, .35) 99%, rgba(251, 251, 251, .35));
+    background-image: linear-gradient(to bottom, rgba(89, 87, 88, .35) 3%, rgba(112, 111, 112, .35) 4%, rgba(253, 252, 253, .22) 10%, rgba(248, 247, 248, .17) 12%, rgba(137, 137, 136, .28) 61%, rgba(222, 222, 222, .35) 90%, rgba(248, 248, 248, .35) 99%, rgba(251, 251, 251, .35))
+}
+
+ul.nav {
+    width: 94%;
+    float: left;
+    margin: 30px 3% 5px
+}
+
+ul.nav li {
+    height: 39px;
+    width: 182px;
+    text-align: center;
+    float: left;
+    margin: 0 2px 0 3px
+}
+
+ul.nav li, ul.nav li a {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+ul.nav li a {
+    display: block;
+    height: 35px;
+    width: 172px;
+    font: 400 22px/24px "Trebuchet MS", Helvetica, sans-serif;
+    color: #c76;
+    text-decoration: none;
+    background: #e8e8ea;
+    border: none;
+    -webkit-border-radius: 5px 5px 0 0;
+    -khtml-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 1px 8px 0 #5b5a59 inset, -1px -1px 10px 0 #aaa;
+    padding: 12px 6px 10px
+}
+
+ul.nav li a:hover {
+    background: #d8d8da
+}
+
+ul.nav li a img {
+    border: none;
+    display: block;
+    margin: 0 auto;
+    padding-top: 10px
+}
+
+ul.nav a.current, ul.nav a.current:hover, ul.nav li.current a {
+    box-shadow: 0 1px 10px 0 rgba(161, 59, 27, .85) inset, -1px -1px 10px 0 #aaa;
+    background: #fd0;
+    border: none;
+    color: #a10;
+    margin-top: -8px;
+    padding: 16px 6px 14px
+}
+
+div#container {
+    width: calc();
+    margin: 0;
+    min-height: 50px
+}
+
+div.panes {
+    position: relative
+}
+
+div.panes > div {
+    display: none;
+    width: 94%;
+    padding: 0 3% 3%
+}
+
+div.panes > div > div > div {
+    position: relative;
+    display: block;
+    width: 100%
+}
+
+div.title {
+    background: #fc7651;
+    color: #fff;
+    font-size: 18px;
+    font-family:"ItcKabelBold",Arial;
+    padding: 8px 0;
+    width: 100%;
+    box-shadow: 0 1px 10px 0 #888;
+    margin: 20px 0 1% 0;
+    text-shadow: 0 0 6px #7d391b;
+    text-align: center;
+
+}
+
+div.title:first-child {
+    margin: 0 0 1%
+}
+
+span.name {
+    float: left;
+    margin: 10px 2%;
+    width: 96%;
+    text-align: left;
+    font: 400 22px/24px "Trebuchet MS", Helvetica, sans-serif;
+    color: #d26129;
+    text-shadow: 0 0 8px #b6b6b6
+}
+
+div.detail {
+    display: inline-block;
+    width: 94%;
+    margin: 5px 3% 0;
+    position: relative
+}
+
+span.number {
+    float: left;
+    font: 400 18px/22px "Trebuchet MS", Helvetica, sans-serif;
+    color: #777;
+    width: 80%;
+    text-align: left;
+    text-shadow: 0 0 10px #b6b6b6
+}
+
+span.cost {
+    float: right;
+    font: 400 18px/20px "Trebuchet MS", Helvetica, sans-serif;
+    color: #d65b1f;
+    width: 16%;
+    text-align: left;
+    text-shadow: 0 0 8px #b6b6b6
+}
+
+span.cost:before {
+    content: " ";
+    display: inline-block;
+    height: 30px;
+    background: url(img/bt.png) no-repeat scroll 0 0 transparent;
+    width: 170px;
+    position: absolute;
+    right: 20%;
+    top: -6px
+}
+
+hr {
+    margin: 8px auto -12px auto;
+    border: none;
+    height: 22px;
+    width: 700px;
+    background: url(img/hr.png) no-repeat scroll 0 0 transparent;
+    position: relative;
+    z-index: 1000
+}
+
+ul.nav a.selectedam, ul.nav a.selectedam:hover, ul.nav li.selectedam a {
+    box-shadow: 0 1px 10px 0 rgba(161, 59, 27, .85) inset, -1px -1px 10px 0 #aaa;
+    background: linear-gradient(90deg, #feaf32, #efe356);
+    background: -moz-linear-gradient(90deg, #feaf32, #efe356);
+    background: -webkit-linear-gradient(90deg, #feaf32, #efe356);
+    background: -o-linear-gradient(90deg, #feaf32, #efe356);
+    border: none;
+    color: #a10;
+    margin-top: -8px;
+    padding: 16px 6px 14px
+}

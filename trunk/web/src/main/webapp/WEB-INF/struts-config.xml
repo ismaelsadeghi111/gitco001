@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean name="paymentInfoForm" type="com.sefryek.doublepizza.web.form.PaymentInfoForm"/>
+        <form-bean name="userForm" type="com.sefryek.doublepizza.web.form.RegistrationForm"/>
+        <form-bean name="deliveryAddressForm" type="com.sefryek.doublepizza.web.form.DeliveryAddressForm"/>
+        <form-bean name="loginForm" type="com.sefryek.doublepizza.web.form.LoginForm"/>
+        <form-bean name="emailForm" type="com.sefryek.doublepizza.web.form.EmailForm"/>
+        <form-bean name="feedBackForm" type="com.sefryek.doublepizza.web.form.FeedBackForm"/>
+        <form-bean name="dpDollarForm" type="com.sefryek.doublepizza.web.form.DpDollarForm"/>
+        <form-bean name="campaignForm" type="com.sefryek.doublepizza.web.form.CampaignForm"/>
+        <form-bean name="quickMenuForm" type="com.sefryek.doublepizza.web.form.QuickMenuForm"/>
+        <form-bean name="cateringForm" type="com.sefryek.doublepizza.web.form.CateringForm"/>
+        <form-bean name="cateringContactInfoForm" type="com.sefryek.doublepizza.web.form.CateringContactInfoForm"/>
+        <form-bean name="popularForm" type="com.sefryek.doublepizza.web.form.PopularForm"/>
+        <form-bean name="sliderForm" type="com.sefryek.doublepizza.web.form.SliderForm"/>
+        <form-bean name="orderForm" type="com.sefryek.doublepizza.web.form.OrderForm"/>
+        <form-bean name="profileForm" type="com.sefryek.doublepizza.web.form.ProfileForm"/>
+        <form-bean name="checkoutForm" type="com.sefryek.doublepizza.web.form.CheckoutForm"/>
+        <form-bean name="dpDollarsHistoryForm" type="com.sefryek.doublepizza.web.form.DpDollarsHistoryForm"/>
+    </form-beans>
+
+    <global-forwards>
+        <forward name="welcome" path="/index.jsp"/>
+        <forward name="forbidden" path="gotoForbidden"/>
+        <forward name="forwardToCustomizePage" path="gotoCustomizePage"/>
+
+    </global-forwards>
+
+    <!--=========================================================================================================================-->
+    <action-mappings>
+
+        <action path="/frontend"
+                type="com.sefryek.doublepizza.web.action.FrontendAction"
+                parameter="operation">
+            <forward name="forwardtoHomePage" path="gotoHomePage" redirect="true"/>
+            <forward name="getMenuList" path="gotoMenuItemsPage" />
+
+            <!--=========-->
+            <forward name="forwardtoAboutPage" path="gotoAboutPage" redirect="true"/>
+            <forward name="forwardtoFunZonePage" path="funZonePage" redirect="true"/>
+            <forward name="forwardtoFranchisingPage" path="gotoFranchisingPage" redirect="true"/>
+            <forward name="forwardtoCateringPage" path="gotoCateringPage" redirect="true"/>
+            <forward name="forwardtoCateringOrderPage" path="gotoCateringOrderPage" redirect="true"/>
+            <forward name="gotoCateringContactInfoPage" path="gotoCateringContactInfoPage" redirect="true"/>
+
+            <forward name="forwardtoTermsConditionsPage" path="gotoTermsConditionsPage" redirect="true"/>
+            <forward name="forwardToLoginPage" path="gotoLoginPage" redirect="true"/>
+            <!--=========-->
+            <forward name="forwardToRegistrationPage" path="forwardToRegistrationPage" redirect="true"/>
+            <forward name="checkoutLayout" path="checkoutLayout" redirect="true"/>
+            <forward name="deliveryAddressLayout" path="deliveryAddressLayout" redirect="true"/>
+            <forward name="forwardToStoreLocatorPage"  path="forwardToStoreLocatorPage" redirect="true"/>
+            <forward name="forwardToFeedBackPage"  path="forwardToFeedBackPage" redirect="true"/>
+            <forward name="forwardToDPDOLLARS"  path="forwardToDPDOLLARS" redirect="true"/>
+            <!--=========-->
+            <forward name="forwardToStoreContainerPage"  path="/pages/2/frontend/storeLocator/storeList.jsp" />
+
+            <forward name="getMenuSingleItemList" path="/pages/frontend/home/categoryCombinedSingleList.jsp" />
+            <!--<forward name="getCategoryItems" path="/pages/frontend/customize/categoryItemsInHeader.jsp" />-->
+            <forward name="getCategoryItems" path="/pages/2/frontend/customize/categoryItemsInHeader2.jsp" />
+            <!--<forward name="getSubCategoryItems" path="/pages/frontend/customize/singleMenuItemInHeader.jsp"/>-->
+            <forward name="getSubCategoryItems" path="/pages/2/frontend/customize/singleMenuItemInHeader2.jsp"/>
+            <!--<forward name="getCombinedItems" path="/pages/frontend/customize/combinedTypesMenuInHeader.jsp"/>-->
+            <forward name="getCombinedItems" path="/pages/2/frontend/customize/combinedTypesMenuInHeader2.jsp"/>
+            <forward name="getMenuAllItemList" path="/pages/frontend/home/categoryCombinedSingleList.jsp" />
+            <!--<forward name="getBasketItems" path="/pages/frontend/customize/basketItems.jsp"/>-->
+            <forward name="getBasketItems" path="/pages/2/frontend/customize/minibasketItems.jsp"/>
+            <forward name="goTocheckoutIt" path="/pages/frontend/checkout/checkoutIt.jsp"/>
+            <forward name="forwardToStoreListForPickup" path="/pages/2/frontend/checkout/storeListForPickup.jsp"/>
+            <forward name="goToViewTestService" path="goToTestServices"/>
+            <forward name="goToViewTestService1" path="/pages/2/frontend/device/testServiceRes.jsp"/>
+            <forward name="deliveryAddress" path="/checkout.do?operation=goToDeliveryAddress"/>
+
+
+
+        </action>
+
+        <action path="/quickmenu"
+                type="com.sefryek.doublepizza.web.action.QuickMenuAction"
+                name="quickMenuForm"
+                parameter="operation">
+            <!--<forward name="getQuickMenu" path="gotoQuickMenu" />-->
+            <forward name="getQuickMenu" path="gotoQuickMenu" />
+            <forward name="getQuickMenuItems" path="/pages/2/frontend/menuitems/quickMenuItems.jsp" />
+            <forward name="gotocustomization" path="/frontend.do?operation=" redirect="true"/>
+            <!--=========-->
+        </action>
+        <action path="/catering"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="cateringForm"
+                parameter="operation">
+            <forward name="getCateringItems" path="gotoCateringPage" />
+            <forward name="getCateringItemsOrder" path="gotoCateringOrderPage" />
+
+            <forward name="getCateringContactInfo" path="gotoCateringContactInfoPage" />
+
+        </action>
+
+        <action path="/register"
+                type="com.sefryek.doublepizza.web.action.UserAction"
+                name="userForm"
+                input="forwardToRegistrationPage"
+                scope="request"
+                parameter="operation"
+                validate="false"
+                cancellable="true"
+                >
+            <forward name="paymentInfo" path="paymentInfoLayout"/>
+            <forward name="deliveryAddress" path="/checkout.do?operation=goToDeliveryAddress"/>
+            <forward name="redirectToPaymentInfo" path="/register.do?operation=redirectToPaymentInfo" redirect="true"/>
+            <forward name="redirectRegRes" path="/register.do?operation=redirectToSuccess" redirect="true" />
+            <forward name="success"     path="forwardToSuccessRegistrationPage" />
+            <forward name="register"    path="forwardToRegistrationPage"/>
+        </action>
+
+        <action path="/finalcheckout"
+                type="com.sefryek.doublepizza.web.action.CheckoutAction"
+                name="paymentInfoForm"
+                input="paymentInfoLayout"
+                scope="request"
+                parameter="operation"
+                cancellable="true"
+                validate="false"
+                >
+            <forward name="redirectToFinish" path="/finalcheckout.do?operation=forwardToFinish" redirect="true"/>
+            <forward name="redirectToError" path="/finalcheckout.do?operation=forwardToFailure" redirect="true"/>
+            <forward name="finish" path="forwardToSuccessCheckOutPage" redirect="true"/>
+            <forward name="errorOnCheckout" path="forwardToFailCheckOutPage" redirect="true"/>
+            <forward name="register" path="forwardToRegistrationPage" />
+        </action>
+
+        <action path="/checkout"
+                type="com.sefryek.doublepizza.web.action.CheckoutAction"
+                name="checkoutForm"
+                parameter="operation"
+                cancellable="true"
+                validate="false"
+                >
+            <forward name="checkoutLayout" path="checkoutLayout" />
+            <forward name="deliveryAddress" path="deliveryAddressLayout" />
+            <forward name="goTocheckoutIt" path="/pages/frontend/checkout/checkoutIt.jsp"/>
+            <forward name="getInvoice" path="/pages/2/frontend/checkout/invoice.jsp"/>
+        </action>
+
+        <action path="/deliveryAddress"
+                type="com.sefryek.doublepizza.web.action.CheckoutAction"
+                name="deliveryAddressForm"
+                input="deliveryAddressLayout"
+                scope="request"
+                parameter="operation"
+                cancellable="true"
+                validate="false"
+                >
+            <forward name="redirectToSuccess" path="/deliveryAddress.do?operation=forwardToSuccess" redirect="true" />
+            <forward name="redirectToStoreLocator" path="/deliveryAddress.do?operation=forwardToStoreLocator" redirect="true" />
+
+            <forward name="success" path="paymentInfoLayout" />
+            <forward name="forwardToStoreLocatorPage"  path="/frontend.do?operation=goToStoreLocator"/>
+            <forward name="deliveryAddress" path="deliveryAddressLayout" />
+            <forward name="forwardtoHomePage" path="gotoHomePage" redirect="true"/>
+        </action>
+
+        <action path="/checkMail"
+                type="com.sefryek.doublepizza.web.action.UserAction"
+                name="emailForm"
+                input="gotoLoginPage"
+                scope="request"
+                parameter="operation"
+                validate="false"
+                cancellable="true"
+                >
+            <forward name="forwardToRegistrationPage" path="forwardToRegistrationPage" redirect="true"/>
+            <forward name="register" path="forwardToRegistrationPage" />
+            <forward name="login" path="gotoLoginPage" />
+            <forward name="success" path="gotoLoginPage" />
+        </action>
+        <!--type="com.sefryek.doublepizza.web.action.UserAction"-->
+        <!--type="org.springframework.web.struts.DelegatingActionProxy"-->
+        <action path="/login"
+                type="com.sefryek.doublepizza.web.action.UserAction"
+                name="loginForm"
+                input="gotoLoginPage"
+                scope="request"
+                parameter="operation"
+                validate="false"
+                cancellable="true">
+            <forward name="redirectRes" path="gotoHomePage" redirect="true" />
+            <forward name="success"     path="forwardToSuccessRegistrationPage" />
+
+            <forward name="paymentInfo" path="paymentInfoLayout" />
+            <forward name="deliveryAddress" path="/checkout.do?operation=goToDeliveryAddress"/>
+            <!--<forward name="deliveryAddress" path="deliveryAddressLayout" />-->
+            <forward name="login" path="gotoLoginPage" />
+            <forward name="fgPassword" path="gotoFgPassPage" />
+            <forward name="resetPassword" path="gotoResetPassPage" />
+        </action>
+
+        <action path="/viewMap"
+                type="com.sefryek.doublepizza.web.action.StoreAction"
+                parameter="operation"
+                >
+            <forward name="viewMap" path="/pages/2/frontend/storeLocator/storeMap.jsp" />
+        </action>
+
+        <action path="/logout"
+                type="com.sefryek.doublepizza.web.action.UserAction"
+                name="userForm"
+                parameter="operation"
+                validate="false"
+                >
+        </action>
+
+        <action path="/Submit"
+                type="com.sefryek.doublepizza.web.action.LanguageSelectAction"
+                name="userForm"
+                validate="true"
+                input="/pages/localeSample.jsp"
+                parameter="method">
+        </action>
+
+        <action path="/locale"
+                type="com.sefryek.doublepizza.web.action.LanguageSelectAction"
+                name="userForm"
+                parameter="method"
+                validate="false">
+
+        </action>
+
+        <action path="/toppingAction"
+                type="com.sefryek.doublepizza.web.action.ToppingAction"
+                parameter="operation">
+            <!--<forward name="gotoCustomizeIt" path="/pages/frontend/customize/customizeIt.jsp"/>-->
+            <forward name="gotoCustomizeIt" path="/pages/2/frontend/customize/customizeTopping.jsp"/>
+
+        </action>
+        <action path="www.zoiteck.com"/>
+
+        <action path="/feedBack"
+                type="com.sefryek.doublepizza.web.action.FeedBackAction"
+                name="feedBackForm"
+                input="forwardToFeedBackPage"
+                scope="request"
+                parameter="operation"
+                validate="true"
+                >
+            <!--<forward name="success" path="forwardToSuccessFeedBackPage" />-->
+            <forward name="feedBack" path="forwardToFeedBackPage" />
+            <forward name="success" path="gotoHomePage" redirect="true" />
+        </action>
+
+        <action path="/menu"
+                type="com.sefryek.doublepizza.web.action.MenuAction"
+                parameter="operation"
+                >
+        </action>
+
+        <action path="/admin"
+                type="com.sefryek.doublepizza.web.action.AdminAction"
+                parameter="method">
+            <forward name="gotoDashboard" path="/pages/backend/dashboard.jsp"/>
+        </action>
+
+        <action path="/downloadFile"
+                type="com.sefryek.doublepizza.web.action.DownloadFileAction"
+                parameter="operation">
+
+        </action>
+
+        <action path="/reload"
+                type="com.sefryek.doublepizza.web.action.BackendAction"
+                parameter="operation">
+            <forward name="forwardtoReloadPage" path="gotoReloadData"/>
+        </action>
+
+        <action path="/dollarSetting"
+                name="dpDollarForm"
+                type="com.sefryek.doublepizza.web.action.DollarSettingAction"
+                parameter="operation">
+            <forward name="forwardtoHomePage" path="gotoBackendHomePage" redirect="true"/>
+            <forward name="forwardToDollarDisplay" path="gotoDollarDisplay" redirect="true"/>
+            <forward name="forwardToEditDollarPeriodic" path="gotoEditDollarPeriodic" redirect="true"/>
+        </action>
+
+        <action path="/campaign"
+                name="campaignForm"
+                validate="false"
+                type="com.sefryek.doublepizza.web.action.CampaignAction"
+                parameter="operation">
+            <forward name="gotoStandardCampaign" path="gotoStandardCampaign" />
+            <forward name="gotoPostalCampaign" path="gotoPostalCampaign" />
+            <forward name="gotoChangedEmailCampaign" path="gotoChangedEmailCampaign" />
+            <forward name="gotoShowResultStandardCampaign" path="gotoShowResultStandardCampaign" />
+            <forward name="gotoShowTemplateStandardCampaign" path="gotoShowTemplateStandardCampaign" />
+            <forward name="gotoSubscribeUserForm" path="gotoSubscribeUserForm" />
+
+        </action>
+
+
+
+        <action path="/popular"
+                name="popularForm"
+                type="com.sefryek.doublepizza.web.action.PopularAction"
+                parameter="operation">
+            <forward name="forwardToPopular" path="gotoPopular" />
+        </action>
+
+        <action path="/slide"
+                name="sliderForm"
+                type="com.sefryek.doublepizza.web.action.SlideAction"
+                parameter="operation">
+            <forward name="forwardToSlide" path="gotoSlide" />
+        </action>
+
+        <action path="/order"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="orderForm"
+                parameter="operation">
+            <forward name="getOrderHistory" path="goToOrderHistory"/>
+            <forward name="getOrderHistoryDetails" path="/pages/2/frontend/order/orderhistory/orderHistoryDetail.jsp"/>
+            <!--=========-->
+        </action>
+
+        <action path="/cateringContactInformation"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="cateringContactInfoForm"
+                input="gotoCateringContactInfoPage"
+                scope="request"
+                parameter="operation"
+                cancellable="true"
+                validate="true"
+                >
+            <forward name="getCateringItems" path="gotoCateringPage" />
+            <forward name="getCateringItemsOrder" path="gotoCateringOrderPage" />
+            <forward name="getCateringContactInfo" path="gotoCateringContactInfoPage" />
+            <forward name="getCateringHome" path="/catering.do?operation=goToCaternigOrderAfterSave" redirect="true"/>
+        </action>
+
+        <action path="/profile"
+                type="com.sefryek.doublepizza.web.action.ProfileAction"
+                name="profileForm"
+                parameter="operation">
+            <forward name="forwardToProfile" path="goToMyProfile"/>
+            <forward name="forwardToChangePassword" path="goToChangePassword"/>
+
+        </action>
+
+        <action path="/mydollars"
+                type="com.sefryek.doublepizza.web.action.DpDollarsAction"
+                name="dpDollarsHistoryForm"
+                parameter="operation">
+            <forward name="getDpDollarsHistory" path="goToDpDollarsHistory" />
+        </action>
+
+    </action-mappings>
+
+    <!--=========================================================================================================================-->
+
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="MessageResources"/>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+    </plug-in>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames"/>
+    </plug-in>
+
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation"
+                      value="/WEB-INF/applicationContext-action.xml" />
+    </plug-in>
+
+</struts-config>

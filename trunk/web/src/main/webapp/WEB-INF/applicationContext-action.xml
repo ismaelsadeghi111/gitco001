@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!--it use when you want to use @Autowired Instead of setter method-->
+    <context:component-scan base-package="com.sefryek.doublepizza"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <bean id="loginForm" name="/login" class="com.sefryek.doublepizza.web.action.UserAction">
+
+    </bean>
+
+    <bean id="orderActionBean" name="/order" class="com.sefryek.doublepizza.web.action.OrderAction">
+        <property name="orderService" ref="orderService"/>
+    </bean>
+
+    <bean id="cateringActionBean" name="/catering" class="com.sefryek.doublepizza.web.action.CateringAction">
+        <property name="cateringService" ref="cateringService"/>
+        <property name="cateringContactInfoService" ref="cateringContactInfoService"/>
+        <property name="cateringOrder" ref="cateringOrder"/>
+        <property name="cateringContactInfo" ref="cateringContactInfo"/>
+        <property name="cateringOrderDetails">
+            <list>
+                <ref bean="cateringOrderDetail"></ref>
+            </list>
+        </property>
+        <property name="caterings">
+            <list>
+                <ref bean="catering"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="cateringContactInformation" name="/cateringContactInformation" class="com.sefryek.doublepizza.web.action.CateringAction">
+        <property name="cateringService" ref="cateringService"/>
+        <property name="cateringContactInfoService" ref="cateringContactInfoService"/>
+        <property name="cateringOrder" ref="cateringOrder"/>
+        <property name="cateringContactInfo" ref="cateringContactInfo"/>
+        <property name="cateringOrderDetails">
+            <list>
+                <ref bean="cateringOrderDetail"></ref>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+    <bean id="cateringForm" name="cateringForm" class="com.sefryek.doublepizza.web.form.CateringForm">
+        <property name="cateringOrder" ref="cateringOrder"/>
+        <property name="catreing" ref="catering"/>
+        <property name="cateringContactInfo" ref="cateringContactInfo"/>
+    </bean>
+
+
+
+
+</beans>

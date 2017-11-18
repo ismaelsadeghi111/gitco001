@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: net.htmlparser:jericho-html:1.5-dev1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/htmlparser/jericho-html/1.5-dev1/jericho-html-1.5-dev1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/htmlparser/jericho-html/1.5-dev1/jericho-html-1.5-dev1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/htmlparser/jericho-html/1.5-dev1/jericho-html-1.5-dev1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project name="build-db" basedir=".." default="make-db">
+
+    <property name="project.name" value="doublepizzadev"/>
+
+    <property name="lib.dir" value="web/WEB-INF/lib"/>
+    <property name="classes.dir" value="web/WEB-INF/classes"/>
+    <property name="db.dir" value="db"/>
+    <property name="model.dir" value="src/com/sefryek/doublepizza/model"/>
+    <property name="src.dir" value="src/com/sefryek/doublepizza"/>
+
+    <property name="db.driver" value="com.mysql.jdbc.Driver"/>
+    <property name="db.url" value="jdbc:sqlserver://68.71.44.66:2711:2711/${project.name}?useUnicode=true&amp;characterEncoding=UTF8"/>
+    <property name="db.username" value="${project.name}"/>
+    <property name="db.password" value="sefryek"/>
+
+    <property name="sql.file" value="01-schema.sql"/>
+    <property name="sql.drop" value="DROP DATABASE IF EXISTS ${project.name};"/>
+    <property name="sql.create" value="CREATE DATABASE IF NOT EXISTS ${project.name} DEFAULT CHARACTER SET utf8;"/>
+    <property name="sql.use" value="USE ${project.name};"/>
+    <property name="db.config.adder" value="hibernate-tool/hibernate.cfg.xml"/>
+
+    <path id="classpath">
+            <fileset dir="${lib.dir}" />
+            <pathelement location="${classes.dir}" />
+    </path>
+
+    <target name="clean">
+        <delete dir="${classes.dir}" />
+        <delete dir="${db.dir}" includes="temp.sql, ${sql.file}" />
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}" />
+
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="yes">
+            <classpath refid="classpath" />
+            <include name="**/*.java" />
+        </javac>
+    </target>
+
+    <taskdef name="hibernatetool"
+             classname="org.hibernate.tool.ant.HibernateToolTask"
+             classpathref="classpath" />
+
+    <target name="make-db" depends="compile">
+        <!--<sql driver="${db.driver}" url="${db.url}" print="yes" classpathref="classpath"-->
+             <!--userid="${db.username}" password="${db.password}">-->
+            <!--${sql.drop}-->
+            <!--${sql.create}-->
+        <!--</sql>-->
+
+        <!--<hibernatetool destdir="${db.dir}" classpath="classpath">-->
+            <!--<annotationconfiguration  configurationfile="${db.config.adder}" />-->
+            <!--<hbm2ddl outputfilename="temp.sql" create="true" format="true"/>-->
+        <!--</hibernatetool>-->
+
+        <!--<concat destfile="${db.dir}/${sql.file}">-->
+            <!--<header trimleading="yes">-->
+                <!--${sql.drop}-->
+                <!--${sql.create}-->
+                <!--${sql.use}-->
+            <!--</header>-->
+            <!--<path path="${db.dir}/temp.sql"/>-->
+        <!--</concat>-->
+
+        <!--<delete dir="${db.dir}" includes="temp.sql" />-->
+        <!--<delete file="${db.dir}/temp.sql" />-->
+    </target>
+
+    <target name="Tax_Model">
+        <hibernatetool destdir="src/com/sefryek/doublepizza/model2" classpath="${classes.dir}">
+            <jdbcconfiguration packagename="com.sefryek.doublepizza.model2" revengfile="src/hibernate.reveng.xml" configurationfile="hibernate-tool/hibernate.cfg.xml" />
+            <hbm2java />
+        </hibernatetool>
+    </target>
+
+
+     <target name="run_02-seed-data" depends="make-db">
+      <sql src="db/02-seed-data.sql" encoding="utf8"
+           driver="${db.driver}" url="${db.url}" print="yes" classpathref="classpath"
+             userid="${db.username}" password="${db.password}"/>
+    </target>
+
+</project>

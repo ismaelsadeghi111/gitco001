@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="mail.doublepizza.ca" />
+        <property name="port" value="465"/>
+        <property name="username" value="noreply@doublepizza.ca" />
+        <property name="password" value="toaCR0evvi!!*m9#@Ztd" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.socketFactory.fallback">true</prop>
+                <prop key="mail.smtps.auth">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.port">465</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean" id="freemarkerConfiguration">
+        <!-- Turn this off to always load via SpringTemplateLoader -->
+        <property name="preferFileSystemAccess" value="false"></property>
+        <property name="templateLoaderPath" value="/WEB-INF/ftl"></property>
+    </bean>
+
+    <bean id="mailMail" class="com.sefryek.doublepizza.dto.web.backend.campaign.SendMail">
+        <property name="userService" ref="userService"/>
+
+        <property  name="standardCampaignService" ref="standardCampaignService"/>
+
+        <property name="mailSender" ref="mailSender" />
+
+        <property name="freemarkerConfiguration" ref="freemarkerConfiguration"></property>
+
+    </bean>
+
+
+</beans>

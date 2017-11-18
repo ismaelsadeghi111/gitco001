@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" name="sessionFactory">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedPackages">
+            <list>
+            <value>com.sefryek.doublepizza.model</value>
+            </list>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.sefryek.doublepizza.model.User</value>
+                <value>com.sefryek.doublepizza.model.UserRole</value>
+                <value>com.sefryek.doublepizza.model.FeedBack</value>
+                <value>com.sefryek.doublepizza.model.Tax</value>
+                <value>com.sefryek.doublepizza.model.Slider</value>
+                <value>com.sefryek.doublepizza.model.Subscriber</value>
+                <value>com.sefryek.doublepizza.model.Dpdollarday</value>
+                <value>com.sefryek.doublepizza.model.DpDollarSchedule</value>
+                <value>com.sefryek.doublepizza.model.StandardCampaign</value>
+                <value>com.sefryek.doublepizza.model.Catering</value>
+                <value>com.sefryek.doublepizza.model.CateringOrder</value>
+                <value>com.sefryek.doublepizza.model.CateringOrderDetail</value>
+                <value>com.sefryek.doublepizza.model.CateringContactInfo</value>
+                <value>com.sefryek.doublepizza.model.ContactInfo</value>
+                <value>com.sefryek.doublepizza.model.DpDollarHistory</value>
+                <value>com.sefryek.doublepizza.model.Coupon</value>
+
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="hibernate.c3p0.minPoolSize">5</prop>
+                <prop key="hibernate.c3p0.maxPoolSize">100</prop>
+                <prop key="hibernate.timeout">1800</prop>
+                <prop key="hibernate.max_statement">50</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" name="cacheManager" singleton="true">
+        <property name="shared" value="true"/>
+    </bean>
+
+    <bean id="baseDAO" class="com.sefryek.doublepizza.dao.BaseDAO" name="baseDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="menuDAO" class="com.sefryek.doublepizza.dao.MenuDAO" name="menuDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="storeDAO" class="com.sefryek.doublepizza.dao.StoreDAO" name="storeDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="userDAO" class="com.sefryek.doublepizza.dao.UserDAO" name="userDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="subscriberDAO" class="com.sefryek.doublepizza.dao.SubscriberDAO" name="subscriberDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="feedBackDAO" class="com.sefryek.doublepizza.dao.FeedBackDAO" name="feedBackDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderDAO" class="com.sefryek.doublepizza.dao.OrderDAO" name="orderDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderDetailDAO" class="com.sefryek.doublepizza.dao.OrderDetailHistoryDAO" name="orderDetailDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="orderDetailHistories">
+            <list>
+                <ref bean="orderDetailHistory"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="taxDAO" class="com.sefryek.doublepizza.dao.TaxDAO" name="taxDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean  id="couponDAO" class="com.sefryek.doublepizza.dao.CouponDAO" name="couponDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean id="sliderDAO" class="com.sefryek.doublepizza.dao.SliderDAO" name="sliderDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="postalCodeDAO" class="com.sefryek.doublepizza.dao.PostalCodeDAO" name="postalCodeDAO">
+        <property name="sessionFactory" ref="sessionFactory" />    
+    </bean>
+
+    <bean id="suggestionDAO" class="com.sefryek.doublepizza.dao.SuggestionDAO" name="suggestionDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.DollarDAO" id="dollarDAO" name="dollarDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.DollarScheduleDAO" id="dollarScheduleDAO" name="dollarScheduleDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.CampaignDAO" id="campaignDAO" name="campaignDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.PopularDAO" id="popularDAO" name="popularDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.CateringDAO" id="cateringDAO" name="cateringDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+
+
+
+    <bean class="com.sefryek.doublepizza.dao.CateringContactInfoDao" id="cateringContactInfoDao" name="cateringContactInfoDao">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean id="orderHistoryDao" class="com.sefryek.doublepizza.dao.OrderHistoryDao" name="orderHistoryDao">
+        <property ref="sessionFactory" name="sessionFactory"/>
+        <property name="orderDetailHistoryDAO" ref="orderDetailHistoryDAO"/>
+        <property name="orderHistories">
+            <list>
+                <ref bean="orderHistory"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="orderDetailHistoryDAO" class="com.sefryek.doublepizza.dao.OrderDetailHistoryDAO" name="orderDetailHistoryDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+
+    <bean class="com.sefryek.doublepizza.dao.ContactInfoDAO" id="contactInfoDAO" name="contactInfoDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.dao.UserRoleDAO" id="userRoleDAO" name="userRoleDAO">
+        <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>
+
+
+
+
+    <!--======================================================= Model  -->
+    <bean id="catering" class="com.sefryek.doublepizza.model.Catering" name="catering">
+    </bean>
+
+    <bean id="cateringOrder" class="com.sefryek.doublepizza.model.CateringOrder" name="cateringOrder">
+        <property name="cateringOrderDetails">
+            <list>
+                <ref bean="cateringOrderDetail"/>
+            </list>
+        </property>
+        <property name="cateringContactInfo" ref="cateringContactInfo"/>
+    </bean>
+
+    <bean id="cateringOrderDetail" class="com.sefryek.doublepizza.model.CateringOrderDetail" name="cateringOrderDetail">
+        <property name="cateringOrder" ref="cateringOrder"/>
+    </bean>
+
+    <bean id="cateringContactInfo" class="com.sefryek.doublepizza.model.CateringContactInfo" name="cateringContactInfo">
+    </bean>
+
+    <bean id="contactInfo" class="com.sefryek.doublepizza.model.ContactInfo" name="contactInfo">
+    </bean>
+
+    <bean id="order" class="com.sefryek.doublepizza.model.Order" name="order">
+        <property name="orderDetails">
+            <list>
+                <ref bean="orderDetail"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="orderHistory" class="com.sefryek.doublepizza.model.OrderHistory" name="orderHistory">
+        <property name="orderDetailHistories">
+            <list>
+                <ref bean="orderDetailHistory"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="orderDetail" class="com.sefryek.doublepizza.model.OrderDetail" name="orderDetail">
+    </bean>
+
+    <bean id="orderDetailHistory" class="com.sefryek.doublepizza.model.OrderDetailHistory" name="orderDetailHistory">
+        <property ref="orderHistory" name="orderHistory"/>
+    </bean>
+    <bean id="dpDollarHistory" class="com.sefryek.doublepizza.model.DpDollarHistory" name="dpDollarHistory">
+    </bean>
+
+    <bean id="user" class="com.sefryek.doublepizza.model.User" name="user">
+        <property name="dpDollarHistories">
+            <list>
+                <ref bean="dpDollarHistory"></ref>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+</beans>

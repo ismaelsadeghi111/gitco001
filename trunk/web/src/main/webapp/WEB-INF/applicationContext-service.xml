@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!--it use when you want to use @Autowired Instead of setter method-->
+    <context:component-scan base-package="com.sefryek.doublepizza"/>
+
+    <bean id="menuService" class="com.sefryek.doublepizza.service.implementation.MenuServiceImpl" name="menuService">
+        <property name="menuDAO" ref="menuDAO"/>
+    </bean>
+
+    <bean id="storeService" class="com.sefryek.doublepizza.service.implementation.StoreServiceImpl" name="storeService">
+        <property name="storeDAO" ref="storeDAO"/>
+    </bean>
+
+    <bean id="userService" class="com.sefryek.doublepizza.service.implementation.UserServiceImpl" name="userService">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="subscriberService" class="com.sefryek.doublepizza.service.implementation.SubscriberServiceImpl" name="subscriberService">
+        <property name="subscriberDAO" ref="subscriberDAO"/>
+    </bean>
+
+    <bean id="feedBackService" class="com.sefryek.doublepizza.service.implementation.FeedBackServiceImpl" name="feedBackService">
+        <property name="feedBackDAO" ref="feedBackDAO"/>
+    </bean>
+
+    <bean id="orderService" class="com.sefryek.doublepizza.service.implementation.OrderServiceImpl" name="orderService">
+        <property name="orderDAO" ref="orderDAO"/>
+        <property name="orderHistoryDao" ref="orderHistoryDao"/>
+    </bean>
+
+    <bean id="taxService" class="com.sefryek.doublepizza.service.implementation.TaxServiceImpl" name="taxService">
+        <property name="taxDAO" ref="taxDAO"/>
+    </bean>
+
+
+    <bean  id="couponService" class="com.sefryek.doublepizza.service.implementation.CouponServiceImpl" name="couponService">
+        <property  name="couponDAO" ref="couponDAO"/>
+    </bean>
+
+    <bean id="sliderService" class="com.sefryek.doublepizza.service.implementation.SliderServiceImpl" name="sliderService">
+        <property name="sliderDAO" ref="sliderDAO"/>
+    </bean>
+
+    <bean id="postalCodeService" class="com.sefryek.doublepizza.service.implementation.PostalCodeServiceImpl" name="postalCodeService">
+        <property name="postalCodeDAO" ref="postalCodeDAO"/>
+    </bean>
+
+    <bean id="suggestionService" class="com.sefryek.doublepizza.service.implementation.SuggestionServiceImpl" name="suggestionService">
+        <property name="suggestionDAO" ref="suggestionDAO"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.DollarServiceImpl" id="dollarService" name="dollarService">
+        <property ref="dollarDAO" name="dollarDAO"/>
+        <property ref="dollarScheduleDAO" name="dollarScheduleDAO"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.PopularServiceImpl" id="popularService" name="popularService">
+        <property ref="popularDAO" name="popularDAO"/>
+    </bean>
+
+
+    <bean class="com.sefryek.doublepizza.service.implementation.CateringServiceImpl" id="cateringService" name="cateringService">
+        <property ref="cateringDAO" name="cateringDAO"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.StandardCampaignImpl" id="standardCampaignService" name="standardCampaignService">
+        <property ref="campaignDAO" name="campaignDAO"/>
+    </bean>
+
+    <bean id="campaignMailRunnable"  class="com.sefryek.doublepizza.service.implementation.CampaignMailRunnable" scope="prototype">
+        <property name="freemarkerConfiguration" ref="freemarkerConfiguration" />
+        <property name="javaMailSender" ref="mailSender" />
+
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.PostalCampaignImpl" id="postalCampaignService" name="postalCampaignService">
+        <property ref="campaignDAO" name="campaignDAO"/>
+        <property name="scheduler" ref="emailSenderScheduler" />
+        <property name="mailRunner" ref="campaignMailRunnable" />
+    </bean>
+
+
+    <bean class="com.sefryek.doublepizza.service.implementation.BirthdayCampaignImpl" id="birthdayCampaignService" name="birthdayCampaignService">
+        <property ref="campaignDAO" name="campaignDAO"/>
+    </bean>
+    <!--Schedulers-->
+    <bean id="taskScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+          <property name="poolSize" value="3" />
+    </bean>
+
+    <bean id="emailSenderScheduler"  class="com.sefryek.doublepizza.scheduler.EmailSenderScheduler" >
+        <property name="taskScheduler" ref="taskScheduler" />
+    </bean>
+
+
+    <bean class="com.sefryek.doublepizza.service.implementation.CateringServiceImpl" id="cateringServiceImpl" name="cateringServiceImpl">
+        <property ref="cateringDAO" name="cateringDAO"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.CateringContactInfoServiceImpl" id="cateringContactInfoService" name="cateringContactInfoService">
+        <property ref="cateringContactInfoDao" name="cateringContactInfoDao"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.ContactInfoServiceImpl" id="contactInfoService" name="contactInfoService">
+    <property ref="contactInfoDAO" name="contactInfoDAO"/>
+    </bean>
+
+    <bean class="com.sefryek.doublepizza.service.implementation.UserRoleServiceImpl" id="userRoleService" name="userRoleService">
+        <property ref="userRoleDAO" name="userRoleDAO"/>
+    </bean>
+
+
+    <!-- the transactional advice -->
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" name="txManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="get*"/>
+            <tx:method name="*" rollback-for="com.sefryek.doublepizza.dao.exception.DAOException"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- the transactional advice -->
+    <aop:config>
+        <aop:pointcut id="userServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.IUserService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="feedBackServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.IFeedBackService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="feedBackServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="orderServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.IOrderService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="orderServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="taxServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.ITaxService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="taxServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="coupounServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.ICouponService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="coupounServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="sliderServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.ISliderService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="sliderServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="subscriberServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.ISubscriberService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="subscriberServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="postalcodeServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.IPostalCodeService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="postalcodeServiceMethods"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="suggestionServiceMethods"
+                      expression="execution(* com.sefryek.doublepizza.service.ISuggestionService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="suggestionServiceMethods"/>
+    </aop:config>
+
+</beans>

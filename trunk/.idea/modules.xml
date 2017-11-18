@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/doublepizza.iml" filepath="$PROJECT_DIR$/doublepizza.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dpCore/dpCore.iml" filepath="$PROJECT_DIR$/dpCore/dpCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dpDevice/dpDevice.iml" filepath="$PROJECT_DIR$/dpDevice/dpDevice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+    </modules>
+  </component>
+</project>

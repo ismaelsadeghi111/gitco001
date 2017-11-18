@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE urlrewrite
+        PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite3.0.dtd">
+
+<urlrewrite>
+
+    <!--<rule>-->
+        <!--<from>^/food/(.*)$</from>-->
+        <!--<to type="forward">/frontend.do?type=$1&amp;status=$2</to>-->
+    <!--</rule>-->
+
+    <rule>
+        <from>/aboutus$</from>
+        <to type="forward">/frontend.do?operation=goToAboutPage</to>
+    </rule>
+    <rule>
+
+        <!-- /frontend.do?operation=goToCustomizePage&categoryId=0&singleId=0&combinedId=7&type=COMBINED&catId=9&menuItemId=7&groupId=0&orderNumber=0&customizing=0&menuName=Menu&menuType=menu&clUrl=1
+                                      /food /  categoryId / singleId / combinedId/  type      /   catId/  menuItemId /groupId /  orderNumber / customizing / menuName /    menuType /    clUrl
+        -->
+    <from>^/food/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$</from>
+        <to type="forward">/frontend.do?operation=goToCustomizePage&amp;categoryId=$1&amp;singleId=$2&amp;combinedId=$3&amp;type=$4&amp;catId=$5&amp;menuItemId=$6&amp;groupId=$7&amp;orderNumber=$8&amp;customizing=$9&amp;menuName=Menu&amp;menuType=menu&amp;clUrl=1</to>
+
+    </rule>
+
+    <rule>
+        <from>^/menu/([a-zA-Z0-9]+)$</from>
+        <to type="forward">/frontend.do?operation=getMenuTypeItems&amp;menuType=$1</to>
+
+    </rule>
+
+    <rule match-type="wildcard">
+        <from>/blog/archive/**</from>
+        <to type="redirect">/roller/history/$1</to>
+    </rule>
+
+</urlrewrite>

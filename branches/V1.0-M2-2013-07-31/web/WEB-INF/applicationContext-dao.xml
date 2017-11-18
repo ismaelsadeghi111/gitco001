@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="annotatedClasses">
+            <list>
+                <value>com.sefryek.doublepizza.model.User</value>
+                <value>com.sefryek.doublepizza.model.FeedBack</value>
+                <value>com.sefryek.doublepizza.model.Tax</value>
+                <value>com.sefryek.doublepizza.model.Slider</value>
+                <value>com.sefryek.doublepizza.model.Subscriber</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="hibernate.c3p0.minPoolSize">5</prop>
+                <prop key="hibernate.c3p0.maxPoolSize">100</prop>
+                <prop key="hibernate.timeout">1800</prop>
+                <prop key="hibernate.max_statement">50</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" singleton="true">
+        <property name="shared" value="true"/>
+    </bean>
+
+    <bean id="baseDAO" class="com.sefryek.doublepizza.dao.BaseDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="menuDAO" class="com.sefryek.doublepizza.dao.MenuDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="storeDAO" class="com.sefryek.doublepizza.dao.StoreDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="userDAO" class="com.sefryek.doublepizza.dao.UserDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="subscriberDAO" class="com.sefryek.doublepizza.dao.SubscriberDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="feedBackDAO" class="com.sefryek.doublepizza.dao.FeedBackDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderDAO" class="com.sefryek.doublepizza.dao.OrderDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="taxDAO" class="com.sefryek.doublepizza.dao.TaxDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="sliderDAO" class="com.sefryek.doublepizza.dao.SliderDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="postalCodeDAO" class="com.sefryek.doublepizza.dao.PostalCodeDAO">
+        <property name="sessionFactory" ref="sessionFactory" />    
+    </bean>
+
+    <bean id="suggestionDAO" class="com.sefryek.doublepizza.dao.SuggestionDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
